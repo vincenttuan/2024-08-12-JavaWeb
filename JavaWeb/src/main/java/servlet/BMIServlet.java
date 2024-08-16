@@ -24,7 +24,9 @@ public class BMIServlet extends HttpServlet {
 	}
 	
 	// 計算 bmi 與透過 resp 印出 bmi 資訊
-	private void calcBmiAndPrint(String name, double height, double weight, HttpServletResponse resp) {
+	private void calcBmiAndPrint(String name, double height, double weight, HttpServletResponse resp) throws IOException {
+		System.out.println(name + ", " + height + ", " + weight);
+		resp.getWriter().print(name + ", " + height + ", " + weight);
 		
 	}
 	
