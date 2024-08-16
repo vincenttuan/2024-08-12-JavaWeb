@@ -16,6 +16,10 @@ public class LottoServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String countStr = req.getParameter("count"); // 取得 count 參數內容
+		
+		
 		Random random = new Random(); // 隨機數物件
 		// 1~39 取 n 個不重複的號碼
 		int n = 5;
@@ -25,7 +29,8 @@ public class LottoServlet extends HttpServlet {
 			lotto.add(number);
 		}
 		// Response 回應
-		resp.getWriter().print("Hello Lotto: " + lotto);
+		resp.getWriter().print("countStr: " + countStr);
+		//resp.getWriter().print("Hello Lotto: " + lotto);
 		
 	}
 	
