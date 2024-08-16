@@ -27,8 +27,10 @@ public class BMIServlet extends HttpServlet {
 	
 	// 計算 bmi 與透過 resp 印出 bmi 資訊
 	private void calcBmiAndPrint(String name, double height, double weight, HttpServletResponse resp) throws IOException {
-		System.out.println(name + ", " + height + ", " + weight);
-		resp.getWriter().print(name + ", " + height + ", " + weight);
+		double bmi = weight / Math.pow(height/100, 2);
+		String result = bmi > 23 ? "Fat" : (bmi <= 18 ? "Thin" : "OK");
+		System.out.printf("%s %.1f %.1f %.2f %s%n", name, height, weight, bmi, result);
+		resp.getWriter().print(String.format("%s %.1f %.1f %.2f %s%n", name, height, weight, bmi, result));
 		
 	}
 	
