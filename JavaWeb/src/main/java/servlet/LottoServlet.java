@@ -26,6 +26,7 @@ public class LottoServlet extends HttpServlet {
 		
 		Random random = new Random(); // 隨機數物件
 		
+		resp.getWriter().print("<html>");
 		for(int i=0;i<count;i++) {
 			// 1~39 取 n 個不重複的號碼
 			int n = 5;
@@ -36,8 +37,12 @@ public class LottoServlet extends HttpServlet {
 			}
 			// Response 回應
 			//resp.getWriter().print("countStr: " + countStr);
+			String color = i % 2 == 0 ? "blue" : "red";
+			resp.getWriter().print("<div style='color: " + color + "'>");
 			resp.getWriter().print("Lotto: " + lotto);
+			resp.getWriter().print("</div>");
 		}
+		resp.getWriter().print("</html>");
 	}
 	
 }
