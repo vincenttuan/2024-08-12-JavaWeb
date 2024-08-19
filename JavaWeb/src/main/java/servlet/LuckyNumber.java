@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,8 +14,17 @@ public class LuckyNumber extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		int month = Integer.parseInt(req.getParameter("month"));
+		int day = Integer.parseInt(req.getParameter("day"));
+		
+		// lucky number: month * day * dayOfMonth(今日日期) % 10
+		LocalDate today = LocalDate.now();
+		int dayOfMonth = today.getDayOfMonth();
+		
+		int number = month * day * dayOfMonth % 10;
+		
+		resp.getWriter().print("Your lucky number is " + number);
+		
 	}
 	
 	
