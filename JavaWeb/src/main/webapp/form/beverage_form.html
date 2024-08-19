@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>飲料單</title>
+</head>
+<body>
+	
+	<form method="post" action="/JavaWeb/servlet/beverage">
+		<fieldset>
+			<legend>飲料單</legend>
+			日期: <input type="date" name="order_date"><p />
+			姓名: <input type="text" name="order_name"><p />
+			數量: <input type="number" name="order_count"><p />
+			飲品: <select name="order_beverage_name">
+					<option value="1" selected>奶茶 $25</option>
+					<option value="2">咖啡 $30</option>
+					<option value="3">紅茶 $15</option>
+					<option value="4">綠茶 $20</option>
+					<option value="5">清茶 $18</option>
+				</select><p />
+			冷熱: <input type="radio" name="cold_or_hot" value="1" checked>冷 
+				 <input type="radio" name="cold_or_hot" value="2">熱<p />
+			甜度: <input type="range" min="1" max="10" name="sweetness"><p />
+			配料: <input type="checkbox" name="topping" value="1">珍珠 $10				 
+				 <input type="checkbox" name="topping" value="2">椰果 $15
+				 <input type="checkbox" name="topping" value="3">綠豆 $8
+				 <input type="checkbox" name="topping" value="4">芋園 $12
+				 <input type="checkbox" name="topping" value="5">薏仁 $5<p />
+			提袋: <input type="checkbox" name="bag" value="1">提袋<p />	 
+			<button type="reset">清空</button>
+			<button type="submit">傳送</button><p />
+		</fieldset>
+		
+	</form>
+	
+</body>
+</html>
