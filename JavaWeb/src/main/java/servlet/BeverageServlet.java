@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 import jakarta.servlet.ServletException;
@@ -41,6 +42,15 @@ public class BeverageServlet extends HttpServlet {
 		String sweetness = req.getParameter("sweetness");
 		String[] toppings = req.getParameterValues("topping"); // 字串陣列
 		String bag = req.getParameter("bag");
+		// 印出表單資訊
+		resp.getWriter().print("orderDate: " + orderDate + "<p>");
+		resp.getWriter().print("orderName: " + orderName + "<p>");
+		resp.getWriter().print("orderCount: " + orderCount + "<p>");
+		resp.getWriter().print("orderBeverageId: " + orderBeverageId + "<p>");
+		resp.getWriter().print("coldOrHot: " + coldOrHot + "<p>");
+		resp.getWriter().print("sweetness: " + sweetness + "<p>");
+		resp.getWriter().print("toppings: " + Arrays.toString(toppings) + "<p>");
+		resp.getWriter().print("bag: " + bag + "<p>");
 		
 	}
 	
