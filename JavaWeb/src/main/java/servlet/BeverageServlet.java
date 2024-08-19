@@ -32,6 +32,15 @@ public class BeverageServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
+		// 取得表單資料
+		String orderDate = req.getParameter("order_date");
+		String orderName = req.getParameter("order_name");
+		int orderCount = Integer.parseInt(req.getParameter("order_count"));
+		String orderBeverageId = req.getParameter("order_beverage_id"); 
+		String coldOrHot = req.getParameter("cold_or_hot");
+		String sweetness = req.getParameter("sweetness");
+		String[] toppings = req.getParameterValues("topping"); // 字串陣列
+		String bag = req.getParameter("bag");
 		
 	}
 	
