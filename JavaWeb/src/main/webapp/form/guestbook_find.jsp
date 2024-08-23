@@ -20,9 +20,11 @@
 			</thead>
 			<tbody>
 				<%for(Guestbook gb : guestbooks) { %>
-					<td><%=gb.getUserId() %></td>
-					<td><%=gb.getMessage() %></td>
-					<td><%=gb.getTime() %></td>
+					<tr>
+						<td><%=gb.getUserId() %></td>
+						<td><%=gb.getMessage() %></td>
+						<td><%=gb.getTime() %></td>
+					</tr>
 				<%} %>
 			</tbody>
 		</table>
