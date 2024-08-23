@@ -14,7 +14,7 @@
 		<title>留言板檢視</title>
 	</head>
 	<body style="padding: 15px">
-		<table class="pure-table-bordered">
+		<table class="pure-table pure-table-bordered">
 			<thead>
 				<th>UserId</th><th>Message</th><th>Time</th>
 			</thead>
