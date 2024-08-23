@@ -4,6 +4,16 @@
   <artifactId>JavaWeb</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
+  
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.11.0</version>
+	</dependency>
+  </dependencies>
+  
   <build>
     <plugins>
       <plugin>
