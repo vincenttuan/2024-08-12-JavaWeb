@@ -7,7 +7,7 @@ import guestbook.entity.Guestbook;
 
 public class GuestbookDao {
 	// Guestbook 儲存資料集合
-	private static CopyOnWriteArrayList<Guestbook> guestbooks;
+	private static List<Guestbook> guestbooks = new CopyOnWriteArrayList<Guestbook>();
 	
 	// 新增 Guestbook
 	public void addGuestbook(Guestbook guestbook) {
