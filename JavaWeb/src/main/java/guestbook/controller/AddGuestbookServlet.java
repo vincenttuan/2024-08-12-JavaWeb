@@ -3,6 +3,7 @@ package guestbook.controller;
 import java.io.IOException;
 import java.util.Date;
 
+import guestbook.dao.GuestbookDao;
 import guestbook.entity.Guestbook;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -23,10 +24,19 @@ public class AddGuestbookServlet extends HttpServlet {
 		String message = req.getParameter("message");
 		
 		// 2.建立 Guestbook 物件資料
+		// 目的: 將表單中所得到的資料注入到 Guestbook 物件中 
 		Guestbook guestbook = new Guestbook();
 		guestbook.setUserId(userId);
 		guestbook.setMessage(message);
 		guestbook.setTime(new Date());
+		
+		// 3.儲存留言記錄到集合中
+		GuestbookDao dao = new GuestbookDao();
+		dao.addGuestbook(guestbook);
+		
+		// 4.取得目前留言記錄筆數
+		int count = dao.findAllGuestbooks().size();
+		resp.getWriter().print("\nGuestbooks count = " + count);
 		
 	}
 	
