@@ -14,6 +14,17 @@
 		<title>留言板檢視</title>
 	</head>
 	<body style="padding: 15px">
-		
+		<table class="pure-table-bordered">
+			<thead>
+				<th>UserId</th><th>Message</th><th>Time</th>
+			</thead>
+			<tbody>
+				<%for(Guestbook gb : guestbooks) { %>
+					<td><%=gb.getUserId() %></td>
+					<td><%=gb.getMessage() %></td>
+					<td><%=gb.getTime() %></td>
+				<%} %>
+			</tbody>
+		</table>
 	</body>
 </html>
