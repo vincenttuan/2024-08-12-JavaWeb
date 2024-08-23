@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 
 import guestbook.dao.GuestbookDao;
 import guestbook.entity.Guestbook;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,7 +26,15 @@ public class FindGuestbookServlet extends HttpServlet {
 		// 將所有留言轉成 json 格式後印出
 		Gson gson = new Gson();
 		String guestBooksJsonString = gson.toJson(guestbooks.toArray());
-		resp.getWriter().print(guestBooksJsonString);
+		System.out.println(guestBooksJsonString);
+		
+		// 請 jsp 來協助資料以 html 呈現 !
+		// RequestDispatcher 請求分派器 (後續的工作要誰來接手)
+		RequestDispatcher rd = req.getRequestDispatcher("/form/guestbook_find.jsp");
+		// 準備好要傳送的資料
+		req.setAttribute("guestbooks", guestbooks);
+		// 傳送
+		rd.forward(req, resp);
 		
 	}
 	
