@@ -3,6 +3,8 @@ package guestbook.controller;
 import java.io.IOException;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import guestbook.dao.GuestbookDao;
 import guestbook.entity.Guestbook;
 import jakarta.servlet.ServletException;
@@ -21,8 +23,9 @@ public class FindGuestbookServlet extends HttpServlet {
 		List<Guestbook> guestbooks = dao.findAllGuestbooks();
 		
 		// 將所有留言轉成 json 格式後印出
-		
-		
+		Gson gson = new Gson();
+		String guestBooksJsonString = gson.toJson(guestbooks.toArray());
+		resp.getWriter().print(guestBooksJsonString);
 		
 	}
 	
