@@ -33,6 +33,7 @@ public class AddGuestbookServlet extends HttpServlet {
 		// 3.儲存留言記錄到集合中
 		GuestbookDao dao = new GuestbookDao();
 		dao.addGuestbook(guestbook);
+		resp.getWriter().print("\nGuestbook Add Success");
 		
 		// 4.取得目前留言記錄筆數
 		int count = dao.findAllGuestbooks().size();
