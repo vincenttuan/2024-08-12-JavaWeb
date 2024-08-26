@@ -1,10 +1,11 @@
+<%@page import="employee.entity.EmployeeName"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	// 取得 EmployeeServlet 傳遞過來的員工姓名
-	List<String> employeeNames = (List<String>)request.getAttribute("employeeNames");
+	List<EmployeeName> employeeNames = (List<EmployeeName>)request.getAttribute("employeeNames");
 %>    
 <!DOCTYPE html>
 <html>
@@ -20,13 +21,14 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>Index</th><th>Name</th>
+							<th>Id</th><th>Name</th>
 						</tr>
 					</thead>
 					<tbody>
-						<% for(int i=0;i<employeeNames.size();i++) { %>
+						<% for(EmployeeName eName : employeeNames) { %>
 							<tr>
-								<td><%=i %></td><td><%=employeeNames.get(i) %></td>
+								<td><%=eName.getId() %></td>
+								<td><%=eName.getName() %></td>
 							</tr>
 						<% } %>
 					</tbody>
