@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import employee.dao.EmployeeDao;
+import employee.entity.EmployeeName;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +20,7 @@ public class EmployeeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 查詢所有員工姓名
-		List<String> employeeNames = dao.findAllNames(); 
+		List<EmployeeName> employeeNames = dao.findAllNames(); 
 		
 		// 將 employeeNames 丟給 /WEB-INF/jsp/employee_list.jsp 來渲染
 		// RequestDispatcher 是分派器
