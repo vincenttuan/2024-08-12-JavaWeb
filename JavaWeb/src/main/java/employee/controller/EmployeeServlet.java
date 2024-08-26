@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import employee.dao.EmployeeDao;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +19,11 @@ public class EmployeeServlet extends HttpServlet {
 		// 查詢所有員工姓名
 		List<String> employeeNames = dao.findAllNames(); 
 		
+		// 將 employeeNames 丟給 /WEB-INF/jsp/employee_list.jsp 來渲染
+		// RequestDispatcher 是分派器
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/jsp/employee_list.jsp");
+		req.setAttribute("employeeNames", employeeNames); // 帶給 jsp 的資料
+		rd.forward(req, resp); // 帶著資料傳遞到指定位置
 	}
 	
 }
