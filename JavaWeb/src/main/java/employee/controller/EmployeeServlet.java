@@ -15,8 +15,8 @@ public class EmployeeServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		List<String> employees 
+		// 查詢所有員工姓名
+		List<String> employeeNames = dao.findAllNames(); 
 		
 	}
 	
