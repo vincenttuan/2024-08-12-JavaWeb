@@ -24,7 +24,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for(int i=0;i<employeeNames.size()-1;i++) { %>
+						<% for(int i=0;i<employeeNames.size();i++) { %>
 							<tr>
 								<td><%=i %></td><td><%=employeeNames.get(i) %></td>
 							</tr>
