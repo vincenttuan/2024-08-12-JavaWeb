@@ -6,10 +6,12 @@ import java.util.List;
 import employee.dao.EmployeeDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@WebServlet("/employee/list")
 public class EmployeeServlet extends HttpServlet {
 	
 	private EmployeeDao dao = new EmployeeDao();
