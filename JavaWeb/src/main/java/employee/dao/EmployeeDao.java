@@ -1,6 +1,7 @@
 package employee.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.List;
 
 public class EmployeeDao {
@@ -10,6 +11,12 @@ public class EmployeeDao {
 		String username = "root";
 		String password = "12345678";
 		String dbUrl = "jdbc:mysql://localhost:3306/web?serverTimezone=Asia/Taipei&characterEncoding=utf-8&useUnicode=true";
+		// 建立連線
+		try {
+			conn = DriverManager.getConnection(dbUrl, username, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
