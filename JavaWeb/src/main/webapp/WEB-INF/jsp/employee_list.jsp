@@ -17,7 +17,7 @@
 		<div class="pure-form">
 			<fieldset>
 				<legend>Employee List</legend>
-				<table style="pure-table pure-table-bordered">
+				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
 							<th>Index</th><th>Name</th>
