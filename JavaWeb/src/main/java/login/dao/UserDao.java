@@ -46,8 +46,8 @@ public class UserDao {
 		return false;
 	}
 	
-	// 查詢使用者
-	public Optional<User> getUser(String userName) {
+	// 查詢使用者 by userName
+	public Optional<User> getUserByName(String userName) {
 		String sql = "select userId, userName, passwordHash, salt, email, active from user where userName = ?";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, userName);
@@ -68,6 +68,12 @@ public class UserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return Optional.empty();
+	}
+	
+	// 查詢使用者 by userId
+	public Optional<User> getUserById(Integer userId) {
+		// Homework
 		return Optional.empty();
 	}
 	
