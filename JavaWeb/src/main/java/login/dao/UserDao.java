@@ -97,14 +97,14 @@ public class UserDao {
 		return users;
 	}
 	
-	// 修改 active
-	public Boolean updateActive(String userName, Boolean active) {
+	// 修改 active by userId
+	public Boolean updateActive(Integer userId, Boolean active) {
 		if (active == null) return false;
 		
-		String sql = "update user set active = ? where userName = ?";
+		String sql = "update user set active = ? where userId = ?";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setBoolean(1, active);
-			pstmt.setString(2, userName);
+			pstmt.setInt(2, userId);
 			
 			int affectedRows = pstmt.executeUpdate();
 			return affectedRows > 0;
@@ -115,4 +115,7 @@ public class UserDao {
 		
 		return false;
 	}
+	
+	// 修改 password By userId
+	
 }
