@@ -78,6 +78,17 @@ public class UserDao {
 		try(Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql)) {
 			
+			while(rs.next()) { // 逐筆尋訪 
+				User user = new User();
+				user.setUserId(rs.getInt("userId"));
+				user.setUserName(rs.getString("userName"));
+				user.setPasswordHash(rs.getString("passwordHash"));
+				user.setSalt(rs.getString("salt"));
+				user.setEmail(rs.getString("email"));
+				user.setActive(rs.getBoolean("active"));
+				
+				users.add(user); // 放入到集合中
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
