@@ -29,7 +29,7 @@ public class UserDao {
 	}
 	
 	// 新增使用者
-	public boolean addUser(User user) {
+	public Boolean addUser(User user) {
 		String sql = "insert into user(userName, passwordHash, salt, email) values(?, ?, ?, ?)";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			// 將參數內容注入到 sql 語句中
@@ -38,8 +38,8 @@ public class UserDao {
 			pstmt.setString(3, user.getSalt());
 			pstmt.setString(4, user.getEmail());
 			// 進行資料表更新程序(更新前與更新後的異動)
-			int rowcount = pstmt.executeUpdate(); // rowcount 資料表異動筆數
-			return rowcount > 0;
+			int affectedRows = pstmt.executeUpdate(); // rowcount 資料表異動筆數
+			return affectedRows > 0;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -97,4 +97,22 @@ public class UserDao {
 		return users;
 	}
 	
+	// 修改 active
+	public Boolean updateActive(String userName, Boolean active) {
+		if (active == null) return false;
+		
+		String sql = "update user set active = ? where userName = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setBoolean(1, active);
+			pstmt.setString(2, userName);
+			
+			int affectedRows = pstmt.executeUpdate();
+			return affectedRows > 0;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return false;
+	}
 }
