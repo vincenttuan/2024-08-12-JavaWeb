@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -74,7 +75,13 @@ public class UserDao {
 	public List<User> findAllUsers() {
 		String sql = "select userId, userName, passwordHash, salt, email, active from user";
 		List<User> users = new ArrayList<>();
-		
+		try(Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql)) {
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return users;
 	}
