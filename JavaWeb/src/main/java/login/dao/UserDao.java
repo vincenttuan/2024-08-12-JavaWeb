@@ -3,6 +3,8 @@ package login.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Optional;
 
 import login.entity.User;
 
@@ -42,6 +44,28 @@ public class UserDao {
 	}
 	
 	// 查詢使用者
-	
+	public Optional<User> getUser(String userName) {
+		String sql = "select userId, userName, passwordHash, salt, email, active from user where userName = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, userName);
+			// 進行查詢
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if(rs.next()) { // 假設有一筆資料
+					User user = new User();
+					user.setUserId(rs.getInt("userId"));
+					user.setUserName(rs.getString("userName"));
+					user.setPasswordHash(rs.getString("passwordHash"));
+					user.setSalt(rs.getString("salt"));
+					user.setEmail(rs.getString("email"));
+					user.setActive(rs.getBoolean("active"));
+					
+					return Optional.of(user);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Optional.empty();
+	}
 	
 }
