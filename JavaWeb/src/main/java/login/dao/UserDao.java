@@ -135,4 +135,19 @@ public class UserDao {
 		return false;
 	}
 	
+	// 刪除 user by userId
+	public Boolean deleteUser(Integer userId) {
+		if(userId == null) return false;
+		String sql = "delete from user where userId = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, userId);
+			// 進行刪除程序
+			int affectedRows = pstmt.executeUpdate();
+			return affectedRows > 0;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }
