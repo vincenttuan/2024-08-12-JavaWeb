@@ -3,8 +3,12 @@ package login.service;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.Optional;
+
+import com.google.protobuf.Option;
 
 import login.dao.UserDao;
+import login.entity.User;
 
 // 使用者服務
 // Controller -> Service -> Dao
@@ -23,6 +27,25 @@ public class UserService {
 	}
 	// -- 服務功能 --------------------------------------------------
 	// 新增使用者
+	public boolean insertUser(String userName, String password, String email) {
+		// 1.查詢使用者是否存在 ?
+		Optional<User> optUser = dao.getUserByName(userName);
+		if(optUser.isPresent()) {
+			throw new RuntimeException("使用者已存在: " + userName);
+		}
+		// 2. 生成加鹽的密碼
+		String salt = generateSalt(); // 鹽
+		String passwordHash = getHashPassword(password, salt); // 加鹽的密碼
+		// 3. 建立要新增的使用者 
+		User user = new User();
+		user.setUserName(userName);
+		user.setPasswordHash(passwordHash);
+		user.setSalt(salt);
+		user.setEmail(email);
+		// 4. 將使用者透過 dao 存到資料表中
+		boolean result = dao.addUser(user);
+		return result;
+	}
 	
 	// 產生鹽
 	private String generateSalt() {
