@@ -1,4 +1,4 @@
-package javaweb.member.login.service;
+package login.service;
 
 import java.util.Properties;
 import javax.mail.Message;
@@ -9,12 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.slf4j.Logger;
-
-import javaweb.member.login.util.LoggerUtil;
-
 public class EmailService {
-	private static final Logger logger = LoggerUtil.getLogger();
 	
 	// Google應用程式密碼
 	// 請參考此篇 https://www.yongxin-design.com/Article/10
@@ -66,8 +61,7 @@ public class EmailService {
             
             // 傳送郵件
             Transport.send(message);
-
-            logger.info("郵件發送成功！");
+            
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
