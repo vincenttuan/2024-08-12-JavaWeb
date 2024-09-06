@@ -19,7 +19,7 @@
     </appender>
     
     <!-- 定義日誌文件的基礎路徑 -->
-    <property name="LOG_HOME" value="C:\Users\student\eclipse-workspace-web\JavaWeb\resources\log" />
+    <property name="LOG_HOME" value="C:/Users/student/eclipse-workspace-web/JavaWeb/resources/log" />
     
     <!-- 文件輸出 appender -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
