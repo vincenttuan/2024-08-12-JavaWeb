@@ -45,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
 		logger.info("userName: " + userName + ", password: " + password + ", email: " + email);
 		
 		// 透過 userService 將使用者資料加密並存入到資料表
-		String result = "";
+		String result = ""; // 要傳給 jsp 呈現的資料
 		try {
 			boolean checkResult = userService.insertUser(userName, password, email);
 			logger.info("註冊結果: " + checkResult);
@@ -63,7 +63,7 @@ public class RegisterServlet extends HttpServlet {
 		}
 		
 		// 重導到指定頁面路徑
-		req.setAttribute("result", result);
+		req.setAttribute("result", result); // 將要傳給 jsp 呈現的資料放到 req 物件屬性中
 		req.getRequestDispatcher("/WEB-INF/jsp/login/register_result.jsp").forward(req, resp);
 		
 	}
