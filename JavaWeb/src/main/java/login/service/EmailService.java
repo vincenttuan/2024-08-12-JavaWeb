@@ -17,7 +17,7 @@ public class EmailService {
 	String googleAppPassword = "";
 	
     // 寄件者的電子郵件地址
-    String from = "@gmail.com";
+    String from = "vincenttuan@gmail.com";
     
 	// to: // 收件者的電子郵件地址
 	public void sendEmail(String to, String confirmUrl) {
