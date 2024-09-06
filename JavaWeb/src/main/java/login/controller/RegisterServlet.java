@@ -26,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	// 顯示註冊會員表單
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 重導到指定路徑
+		// 重導到指定頁面路徑
 		req.getRequestDispatcher("/WEB-INF/jsp/login/register.jsp").forward(req, resp);
 	}
 	
@@ -45,6 +45,7 @@ public class RegisterServlet extends HttpServlet {
 		logger.info("userName: " + userName + ", password: " + password + ", email: " + email);
 		
 		// 透過 userService 將使用者資料加密並存入到資料表
+		String result = "";
 		try {
 			boolean checkResult = userService.insertUser(userName, password, email);
 			logger.info("註冊結果: " + checkResult);
@@ -53,13 +54,17 @@ public class RegisterServlet extends HttpServlet {
 				String to = email; // 使用者的 email (收件者)
 				String confirmUrl = "http://localhost:8080/JavaWeb/user/confirm/email?userName=" + userName;
 				emailService.sendEmail(to, confirmUrl);
+				result = "註冊成功";
 			}
 			
 		} catch (Exception e) {
 			logger.error("註冊失敗: " + e.getMessage());
+			result = "註冊失敗: " + e.getMessage();
 		}
 		
-		
+		// 重導到指定頁面路徑
+		req.setAttribute("result", result);
+		req.getRequestDispatcher("/WEB-INF/jsp/login/register_result.jsp").forward(req, resp);
 		
 	}
 	
