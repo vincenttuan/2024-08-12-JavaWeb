@@ -1,0 +1,41 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+        	<!-- 
+        		%d 表示日期
+        		{HH:mm:ss.SSS} 表示時（24小時制）分秒毫秒
+        		%thread: 線程名稱
+        		%replace(%thread){'^.*?(\d+)$', '$1'}: 線程名稱，只顯示線程名稱的最後一部分
+        		%-5: 佔5個字符寬度並向左(-)對齊
+        		level: 級別 => DEBUG, INFO, WARN, ERROR 
+        		%logger{36}: 顯示記錄日誌的 logger 名稱(是指類的全名)，最多36個字符名稱長度超過36個字符，會進行縮寫
+        		%-15.15: 第1個15表示佔15個字符寬度並向左對齊(-)，第2個15表示最多顯示15個字符，多餘的字符會被截斷
+        		%logger{0}: 將只顯示 logger 名稱的最後一部分，也就是類名。
+        		%msg: 實際日誌信息
+        		%n: 換行
+        	-->
+            <pattern>%d{HH:mm:ss.SSS} [%2.2(%replace(%thread){'^.*?(\d+)$', '$1'})] %-5level %-15.15(%logger{0}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- 定義日誌文件的基礎路徑 -->
+    <property name="LOG_HOME" value="" />
+    
+    <!-- 文件輸出 appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天滾動一次日誌文件，保存30天的日誌文件 -->
+            <fileNamePattern>${LOG_HOME}/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-21.21(%thread)] %-5level %logger{64} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
