@@ -14,10 +14,10 @@ public class EmailService {
 	// Google應用程式密碼
 	// 請參考此篇 https://www.yongxin-design.com/Article/10
 	// 請自行產生Google應用程式密碼
-	String googleAppPassword = "";
+	String googleAppPassword = "veya zcdl qwaq ygyv";
 	
     // 寄件者的電子郵件地址
-    String from = "@gmail.com";
+    String from = "vincenttuan@gmail.com";
     
 	// to: // 收件者的電子郵件地址
 	public void sendEmail(String to, String confirmUrl) {
