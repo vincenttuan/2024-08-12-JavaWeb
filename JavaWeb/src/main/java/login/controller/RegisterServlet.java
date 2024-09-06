@@ -23,6 +23,17 @@ public class RegisterServlet extends HttpServlet {
 	
 	private EmailService emailService = new EmailService();
 	
+	// 顯示註冊會員表單
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 重導到指定路徑
+		req.getRequestDispatcher("/WEB-INF/jsp/login/register.jsp").forward(req, resp);
+	}
+	
+
+
+
+	// 會員表單註冊
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 1.接收使用者所傳的資料
