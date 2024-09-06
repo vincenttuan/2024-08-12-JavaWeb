@@ -67,8 +67,12 @@ public class EmailService {
             // 傳送郵件
             Transport.send(message);
             
+            // 發送成功 Log
+            logger.info("發送成功: " + to);
+            
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+        	// 發送失敗 Log
+        	logger.error("發送失敗: " + e.getMessage());
         }
     }
 }
