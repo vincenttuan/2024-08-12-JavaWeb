@@ -15,5 +15,6 @@
 				<button type="submit">再註冊一個</button> 
 			</fieldset>
 		</form>
+		<a href="/JavaWeb/user/register">再註冊一個</a>
 	</body>
 </html>
