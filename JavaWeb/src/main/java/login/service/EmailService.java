@@ -9,7 +9,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EmailService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 	
 	// Google應用程式密碼
 	// 請參考此篇 https://www.yongxin-design.com/Article/10
