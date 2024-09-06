@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import login.service.EmailService;
 import login.service.UserService;
 
 // 使用者註冊
@@ -19,6 +20,8 @@ public class RegisterServlet extends HttpServlet {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterServlet.class);
 	
 	private UserService userService = UserService.getInstance();
+	
+	private EmailService emailService = new EmailService();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -34,6 +37,13 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			boolean checkResult = userService.insertUser(userName, password, email);
 			logger.info("註冊結果: " + checkResult);
+			
+			if(checkResult) { // 註冊成功
+				String to = email; // 使用者的 email (收件者)
+				String confirmUrl = "http://localhost:8080/JavaWeb/user/confirm/email?userName=" + userName;
+				emailService.sendEmail(to, confirmUrl);
+			}
+			
 		} catch (Exception e) {
 			logger.error("註冊失敗: " + e.getMessage());
 		}

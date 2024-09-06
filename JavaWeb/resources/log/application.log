@@ -101,3 +101,12 @@
 2024-09-06 19:26:51.006 [http-nio-8080-exec-7 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
 2024-09-06 19:26:51.161 [http-nio-8080-exec-6 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
 2024-09-06 19:26:51.335 [http-nio-8080-exec-8 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:44:10.606 [http-nio-8080-exec-6 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:44:10.689 [http-nio-8080-exec-6 ] INFO  login.controller.RegisterServlet - checkResult: true
+2024-09-06 19:44:17.764 [http-nio-8080-exec-7 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:46:05.376 [http-nio-8080-exec-1 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:46:05.434 [http-nio-8080-exec-1 ] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: jo
+2024-09-06 19:46:12.746 [http-nio-8080-exec-4 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:46:12.748 [http-nio-8080-exec-4 ] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: jo
+2024-09-06 19:46:13.526 [http-nio-8080-exec-8 ] INFO  login.controller.RegisterServlet - userName: jo, password: 5678, email: jo@gmail.com
+2024-09-06 19:46:13.528 [http-nio-8080-exec-8 ] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: jo
