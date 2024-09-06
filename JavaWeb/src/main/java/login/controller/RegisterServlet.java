@@ -25,7 +25,7 @@ public class RegisterServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		
 		// 將所收到的資料寫入 Log 以便日後 debug 或追蹤紀錄使用
-		
+		logger.info("userName: " + userName + ", password: " + password + ", email: " + email);
 		
 	}
 	
