@@ -39,6 +39,7 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("loginMessage", "登入失敗");
 		}
 		
+		req.getRequestDispatcher("/WEB-INF/jsp/login/login_result.jsp").forward(req, resp);
 	}
 	
 }
