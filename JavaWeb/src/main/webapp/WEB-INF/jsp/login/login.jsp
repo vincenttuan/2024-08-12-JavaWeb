@@ -17,7 +17,7 @@
 		</style>
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form pure-form-aligned" method="post" action="/JavaWeb/user/login">
+		<form class="pure-form pure-form-aligned" method="post" action="${pageContext.request.contextPath}/user/login">
 			<fieldset>
 				<legend><h1>👨‍💼 會員登入</h1></legend>
 				<div class="pure-control-group">
