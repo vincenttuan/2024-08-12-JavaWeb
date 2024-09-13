@@ -1,10 +1,10 @@
-<%@ page import="login.entity.User"%>
+<%@ page import="login.dto.UserDto"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	// 接收 servlet 端傳來的資訊
-	List<User> users = (List<User>)request.getAttribute("users");
+	List<UserDto> userDtos = (List<UserDto>)request.getAttribute("userDtos");
 %>    
 <!DOCTYPE html>
 <html>
@@ -27,7 +27,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for(User user : users) { %>
+						<% for(UserDto user : userDtos) { %>
 							<tr>
 								<td><%=user.getUserId() %></td>
 								<td><%=user.getUserName() %></td>
