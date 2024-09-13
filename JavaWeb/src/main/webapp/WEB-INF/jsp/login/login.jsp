@@ -22,11 +22,11 @@
 				<legend><h1>👨‍💼 會員登入</h1></legend>
 				<div class="pure-control-group">
 					<label for="userName">👤️ 帳號</label>
-					<input name="userName" type="text" placeholder="請輸入帳號">
+					<input name="userName" type="text" placeholder="請輸入帳號" required>
 				</div>
 				<div class="pure-control-group">
 					<label for="password">🔐 密碼</label>
-					<input name="password" type="password" placeholder="請輸入密碼">
+					<input name="password" type="password" placeholder="請輸入密碼" required>
 				</div>
 				<div class="pure-controls">
 					<button type="submit" class="pure-button pure-button-primary">登入</button>
