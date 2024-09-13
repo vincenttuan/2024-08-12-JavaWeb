@@ -17,5 +17,15 @@ public class LoginServlet extends HttpServlet {
 		// 重導到指定 login.jsp 表單畫面
 		req.getRequestDispatcher("/WEB-INF/jsp/login/login.jsp").forward(req, resp);
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String userName = req.getParameter("userName");
+		String password = req.getParameter("password");
+		
+		// 比對登入資訊
+		
+		
+	}
 	
 }

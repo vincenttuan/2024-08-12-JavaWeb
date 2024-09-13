@@ -98,4 +98,25 @@ public class UserService {
 		return userDtos;
 	}
 	
+	// 驗證使用者
+	public UserDto verifyUser(String userName, String password) {
+		// 1.查詢是否有此人
+		Optional<User> optUser = dao.getUserByName(userName);
+		if(optUser.isEmpty()) {
+			throw new RuntimeException("查無使用者: " + userName);
+		}
+		User user = optUser.get();
+		// 2.驗證密碼
+		String passwordHash = getHashPassword(password, user.getSalt());
+		if(passwordHash.equals(user.getPasswordHash())) {
+			UserDto userDto = new UserDto();
+			userDto.setUserId(user.getUserId());
+			userDto.setUserName(user.getUserName());
+			userDto.setEmail(user.getEmail());
+			userDto.setActive(user.getActive());
+			return userDto;
+		}
+		throw new RuntimeException("密碼錯誤");
+	}
+	
 }
