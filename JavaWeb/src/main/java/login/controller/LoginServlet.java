@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("loginMessage", "登入成功");
 		} catch (LoginException e) {
 			req.setAttribute("loginSuccess", false);
-			req.setAttribute("loginMessage", "登入失敗");
+			req.setAttribute("loginMessage", "登入失敗: " + e.getMessage());
 		}
 		
 		req.getRequestDispatcher("/WEB-INF/jsp/login/login_result.jsp").forward(req, resp);
