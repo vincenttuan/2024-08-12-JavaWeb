@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import login.dto.UserDto;
 import login.entity.User;
 import login.service.UserService;
 
@@ -19,9 +20,9 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 得到所有使用者資料
-		List<User> users = userService.findAllUsers();
+		List<UserDto> userDtos = userService.findAllUserDtos();
 		// 將 users 放到 request 物件屬性中, 以便傳給 user.jsp 使用
-		req.setAttribute("users", users);
+		req.setAttribute("userDtos", userDtos);
 		// 傳送到 user.jsp
 		req.getRequestDispatcher("/WEB-INF/jsp/login/user.jsp").forward(req, resp);
 	}
