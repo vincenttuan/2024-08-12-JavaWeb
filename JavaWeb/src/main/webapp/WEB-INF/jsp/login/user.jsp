@@ -14,7 +14,6 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 15px">
-		<%=users %>
 		<div class="pure-form">
 			<fieldset>
 				<legend>User 列表</legend>
