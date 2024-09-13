@@ -3,6 +3,7 @@ package login.service;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 import com.google.protobuf.Option;
@@ -73,6 +74,11 @@ public class UserService {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	// 查詢所有使用者資料
+	public List<User> findAllUsers() {
+		return dao.findAllUsers();
 	}
 	
 }
