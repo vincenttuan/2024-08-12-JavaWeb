@@ -11,8 +11,38 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>User 列表資料</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
-	<body>
+	<body style="padding: 15px">
 		<%=users %>
+		<div class="pure-form">
+			<fieldset>
+				<legend>User 列表</legend>
+				<table class="pure-table pure-table-bordered">
+					<thead>
+						<tr>
+							<th>userId</th>
+							<th>userName</th>
+							<th>passwordHash</th>
+							<th>salt</th>
+							<th>email</th>
+							<th>active</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% for(User user : users) { %>
+							<tr>
+								<td><%=user.getUserId() %></td>
+								<td><%=user.getUserName() %></td>
+								<td><%=user.getPasswordHash() %></td>
+								<td><%=user.getSalt() %></td>
+								<td><%=user.getEmail() %></td>
+								<td><%=user.getActive() %></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
+			</fieldset>
+		</div>
 	</body>
 </html>
