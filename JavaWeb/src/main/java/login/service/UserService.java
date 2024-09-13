@@ -2,6 +2,7 @@ package login.service;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import java.util.Optional;
 import com.google.protobuf.Option;
 
 import login.dao.UserDao;
+import login.dto.UserDto;
 import login.entity.User;
 
 // 使用者服務
@@ -77,8 +79,23 @@ public class UserService {
 	}
 	
 	// 查詢所有使用者資料
-	public List<User> findAllUsers() {
-		return dao.findAllUsers();
+	// 並將 entity(User) 轉 dto(UserDto)
+	public List<UserDto> findAllUserDtos() {
+		// 從 dao 中得到 List<User>
+		List<User> users = dao.findAllUsers();
+		// 建立 UserDto 集合
+		List<UserDto> userDtos = new ArrayList<>();
+		// 逐筆將 user 轉 userDto
+		for(User user : users) {
+			UserDto userDto = new UserDto();
+			userDto.setUserId(user.getUserId());
+			userDto.setUserName(user.getUserName());
+			userDto.setEmail(user.getEmail());
+			userDto.setActive(user.getActive());
+			// 放入到 UserDto 集合
+			userDtos.add(userDto);
+		}
+		return userDtos;
 	}
 	
 }
