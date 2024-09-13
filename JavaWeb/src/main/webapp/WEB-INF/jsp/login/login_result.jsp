@@ -20,9 +20,9 @@
 		<div class="pure-form">
 			<fieldset>
 				<legend>登入結果</legend>
-				登入成功: 
-				登入訊息:
-				使用者資訊: 
+				登入成功: <%=loginSuccess %><p>
+				登入訊息: <%=loginMessage %><p>
+				使用者資訊: <%=userDto %><p>
 			</fieldset>
 		</div>
 	</body>
