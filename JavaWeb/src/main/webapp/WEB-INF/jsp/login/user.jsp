@@ -22,8 +22,6 @@
 						<tr>
 							<th>userId</th>
 							<th>userName</th>
-							<th>passwordHash</th>
-							<th>salt</th>
 							<th>email</th>
 							<th>active</th>
 						</tr>
@@ -33,8 +31,6 @@
 							<tr>
 								<td><%=user.getUserId() %></td>
 								<td><%=user.getUserName() %></td>
-								<td><%=user.getPasswordHash() %></td>
-								<td><%=user.getSalt() %></td>
 								<td><%=user.getEmail() %></td>
 								<td><%=user.getActive() %></td>
 							</tr>
