@@ -133,3 +133,14 @@
 2024-09-06 21:22:47.526 [http-nio-8080-exec-4 ] INFO  login.service.EmailService - 發送成功: vincenttuan@gmail.com
 2024-09-06 21:23:02.856 [http-nio-8080-exec-3 ] INFO  login.controller.RegisterServlet - userName: test5, password: 1234, email: vincenttuan@gmail.com
 2024-09-06 21:23:02.860 [http-nio-8080-exec-3 ] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: test5
+2024-09-06 21:25:54.691 [http-nio-8080-exec-18] INFO  login.controller.RegisterServlet - userName: test, password: 1234, email: vincenttuan@gmail.com
+2024-09-06 21:25:54.744 [http-nio-8080-exec-18] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: test
+2024-09-06 21:26:02.941 [http-nio-8080-exec-12] INFO  login.controller.RegisterServlet - userName: test7, password: 1234, email: vincenttuan@gmail.com
+2024-09-06 21:26:02.948 [http-nio-8080-exec-12] INFO  login.controller.RegisterServlet - 註冊結果: true
+2024-09-06 21:26:05.801 [http-nio-8080-exec-12] INFO  login.service.EmailService - 發送成功: vincenttuan@gmail.com
+2024-09-06 21:34:26.083 [http-nio-8080-exec-20] INFO  login.controller.RegisterServlet - userName: test7, password: 1234, email: vincenttuan@gmail.com
+2024-09-06 21:34:26.087 [http-nio-8080-exec-20] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: test7
+2024-09-06 21:34:36.300 [http-nio-8080-exec-24] INFO  login.controller.RegisterServlet - userName: test7, password: 1234, email: vincenttuan@gmail.com
+2024-09-06 21:34:36.306 [http-nio-8080-exec-24] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: test7
+2024-09-06 21:34:44.944 [http-nio-8080-exec-26] INFO  login.controller.RegisterServlet - userName: test, password: 1234, email: vincentjava@yahoo.com.tw
+2024-09-06 21:34:44.954 [http-nio-8080-exec-26] ERROR login.controller.RegisterServlet - 註冊失敗: 使用者已存在: test
