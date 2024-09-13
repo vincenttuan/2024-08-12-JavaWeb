@@ -12,6 +12,7 @@ import com.google.protobuf.Option;
 import login.dao.UserDao;
 import login.dto.UserDto;
 import login.entity.User;
+import login.exception.LoginException;
 
 // 使用者服務
 // Controller -> Service -> Dao
@@ -99,11 +100,11 @@ public class UserService {
 	}
 	
 	// 驗證使用者
-	public UserDto verifyUser(String userName, String password) {
+	public UserDto verifyUser(String userName, String password) throws LoginException {
 		// 1.查詢是否有此人
 		Optional<User> optUser = dao.getUserByName(userName);
 		if(optUser.isEmpty()) {
-			throw new RuntimeException("查無使用者: " + userName);
+			throw new LoginException("查無使用者: " + userName);
 		}
 		User user = optUser.get();
 		// 2.驗證密碼
@@ -116,7 +117,7 @@ public class UserService {
 			userDto.setActive(user.getActive());
 			return userDto;
 		}
-		throw new RuntimeException("密碼錯誤");
+		throw new LoginException("密碼錯誤");
 	}
 	
 }
