@@ -1,7 +1,10 @@
 package login.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +25,14 @@ public class AuthCodeServlet extends HttpServlet {
 		// 產生四位數的隨機驗證碼
 		String authCode = String.format("%04d", random.nextInt(10000)); // 0000~9999
 		logger.info("驗證碼: " + authCode);
+		
+		// 寫入圖片資料
+		ImageIO.write(getAuthCodeImage(authCode), "JPEG", resp.getOutputStream());
+	}
+	
+	// 產生圖像資訊
+	private BufferedImage getAuthCodeImage(String authCode) {
+		return null;
 	}
 	
 }
