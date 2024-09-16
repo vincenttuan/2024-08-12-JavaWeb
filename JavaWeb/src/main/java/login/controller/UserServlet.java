@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import login.dto.UserDto;
 import login.entity.User;
 import login.service.UserService;
@@ -19,6 +20,12 @@ public class UserServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 檢查有 session 登入資料才可以繼續
+		HttpSession session = req.getSession();
+		if(session.getAttribute("loginStatus") == null) {
+			resp.getWriter().print("Not Login !");
+			return;
+		}
 		// 得到所有使用者資料
 		List<UserDto> userDtos = userService.findAllUserDtos();
 		// 將 users 放到 request 物件屬性中, 以便傳給 user.jsp 使用
