@@ -32,7 +32,10 @@ public class AuthCodeServlet extends HttpServlet {
 	
 	// 產生圖像資訊
 	private BufferedImage getAuthCodeImage(String authCode) {
-		return null;
+		// 建立圖像暫存區
+		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_RGB);
+		
+		return img;
 	}
 	
 }
