@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import login.dto.UserDto;
 import login.exception.LoginException;
 import login.service.UserService;
@@ -34,6 +35,11 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("userDto", userDto);
 			req.setAttribute("loginSuccess", true);
 			req.setAttribute("loginMessage", "登入成功");
+			// 透過 session 來紀錄登入成功資訊
+			HttpSession session = req.getSession();
+			session.setAttribute("loginStatus", true); // 登入狀態
+			session.setAttribute("loginName", userName); // 登入者姓名
+			
 		} catch (LoginException e) {
 			req.setAttribute("loginSuccess", false);
 			req.setAttribute("loginMessage", "登入失敗: " + e.getMessage());
