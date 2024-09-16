@@ -51,7 +51,7 @@ public class AuthCodeServlet extends HttpServlet {
 		g.drawString(authCode, 22, 22);
 		// 干擾線 
 		g.setColor(Color.RED);
-		for(int i=0;i<10;i++) {
+		for(int i=0;i<15;i++) {
 			int x1 = random.nextInt(80);
 			int y1 = random.nextInt(30);
 			int x2 = random.nextInt(80);
