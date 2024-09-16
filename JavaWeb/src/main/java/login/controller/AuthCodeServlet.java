@@ -1,6 +1,7 @@
 package login.controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -39,9 +40,24 @@ public class AuthCodeServlet extends HttpServlet {
 		// 建立畫布
 		Graphics g = img.getGraphics();
 		// 設定顏色
-		g.setColor(Color.YELLOW); // 拿彩色筆
+		g.setColor(Color.YELLOW); // 拿彩色筆(黃)
 		// 塗滿背景
 		g.fillRect(0, 0, 80, 30);
+		// 設定顏色
+		g.setColor(Color.BLACK); // 拿彩色筆(黑)
+		// 設定字型
+		g.setFont(new Font("新細明體", Font.BOLD, 20)); // 字體, 風格, 大小
+		// 繪字串
+		g.drawString(authCode, 22, 22);
+		// 干擾線 
+		g.setColor(Color.RED);
+		for(int i=0;i<10;i++) {
+			int x1 = random.nextInt(80);
+			int y1 = random.nextInt(30);
+			int x2 = random.nextInt(80);
+			int y2 = random.nextInt(30);
+			g.drawLine(x1, y1, x2, y2); // 繪直線
+		}
 		return img;
 	}
 	
