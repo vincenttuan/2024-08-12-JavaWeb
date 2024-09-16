@@ -17,6 +17,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 // 取得驗證碼
 @WebServlet("/user/authcode")
@@ -28,7 +29,9 @@ public class AuthCodeServlet extends HttpServlet {
 		// 產生四位數的隨機驗證碼
 		String authCode = String.format("%04d", random.nextInt(10000)); // 0000~9999
 		logger.info("驗證碼: " + authCode);
-		
+		// 將驗證碼存入到 session 中
+		HttpSession session = req.getSession();
+		session.setAttribute("authCode", authCode);
 		// 寫入圖片資料
 		ImageIO.write(getAuthCodeImage(authCode), "JPEG", resp.getOutputStream());
 	}
