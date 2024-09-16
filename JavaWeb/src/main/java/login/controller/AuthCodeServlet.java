@@ -48,10 +48,25 @@ public class AuthCodeServlet extends HttpServlet {
 		g.fillRect(0, 0, 80, 30);
 		// 設定顏色
 		g.setColor(Color.BLACK); // 拿彩色筆(黑)
+		
 		// 設定字型
-		g.setFont(new Font("新細明體", Font.BOLD, 20)); // 字體, 風格, 大小
+		//g.setFont(new Font("新細明體", Font.BOLD, 20)); // 字體, 風格, 大小
 		// 繪字串
-		g.drawString(authCode, 22, 22);
+		//g.drawString(authCode, 22, 22);
+		
+		// 不同字型大小與位置
+		g.setFont(new Font("新細明體", Font.BOLD, 14));
+        g.drawString(authCode.charAt(0)+"", 3, 17); // code, x, y
+        g.setFont(new Font("新細明體", Font.BOLD, 30));
+        g.drawString(authCode.charAt(1)+"", 10, 25); // code, x, y
+        g.setFont(new Font("新細明體", Font.BOLD, 18));
+        g.drawString(authCode.charAt(2)+"", 40, 25); // code, x, y
+        g.setFont(new Font("新細明體", Font.BOLD, 20));
+        if(authCode.charAt(3) % 2 == 0)
+            g.drawString(authCode.charAt(3)+"", 65, 10); // code, x, y
+        else
+            g.drawString(authCode.charAt(3)+"", 65, 27); // code, x, y
+		
 		// 干擾線 
 		g.setColor(Color.RED);
 		for(int i=0;i<15;i++) {
