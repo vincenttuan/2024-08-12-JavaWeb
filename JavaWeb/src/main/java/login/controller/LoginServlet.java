@@ -26,17 +26,24 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String authCode = req.getParameter("authCode");
 		String userName = req.getParameter("userName");
 		String password = req.getParameter("password");
 		
+		HttpSession session = req.getSession();
 		// 比對登入資訊
 		try {
+			// 比對驗證碼
+			String sessionAuthCode = (String)session.getAttribute("authCode");
+			if(!authCode.equals(sessionAuthCode)) { // 比對
+				throw new LoginException("驗證碼不符");
+			}
+			// 比對 userName & password 登入資訊
 			UserDto userDto = userService.verifyUser(userName, password);
 			req.setAttribute("userDto", userDto);
 			req.setAttribute("loginSuccess", true);
 			req.setAttribute("loginMessage", "登入成功");
 			// 透過 session 來紀錄登入成功資訊
-			HttpSession session = req.getSession();
 			session.setAttribute("loginStatus", true); // 登入狀態
 			session.setAttribute("loginName", userName); // 登入者姓名
 			
