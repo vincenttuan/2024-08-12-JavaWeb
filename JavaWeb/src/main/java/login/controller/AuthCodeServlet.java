@@ -1,5 +1,7 @@
 package login.controller;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
@@ -34,7 +36,12 @@ public class AuthCodeServlet extends HttpServlet {
 	private BufferedImage getAuthCodeImage(String authCode) {
 		// 建立圖像暫存區
 		BufferedImage img = new BufferedImage(80, 30, BufferedImage.TYPE_INT_RGB);
-		
+		// 建立畫布
+		Graphics g = img.getGraphics();
+		// 設定顏色
+		g.setColor(Color.YELLOW); // 拿彩色筆
+		// 塗滿背景
+		g.fillRect(0, 0, 80, 30);
 		return img;
 	}
 	
