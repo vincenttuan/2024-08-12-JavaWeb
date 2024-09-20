@@ -20,7 +20,9 @@ public class LoginFilter extends HttpFilter {
 		// 檢查有 session 登入資料才可以繼續
 		HttpSession session = req.getSession();
 		if(session.getAttribute("loginStatus") == null) {
-			resp.getWriter().print("Not Login !");
+			//resp.getWriter().print("Not Login !");
+			// 外重導到登入頁面
+			resp.sendRedirect("/JavaWeb/user/login");
 			return;
 		}
 		
