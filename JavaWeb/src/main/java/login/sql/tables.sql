@@ -1,4 +1,5 @@
 /*
+-- 商品
 +------------+------------------+----------+----------------+
 | product_id | product_name     | price    | stock_quantity |
 +------------+------------------+----------+----------------+
@@ -23,6 +24,8 @@ insert into product(product_name, price, stock_quantity) values('MusicBox', 3000
 insert into product(product_name, price, stock_quantity) values('Pad', 20000.00, 75);
 insert into product(product_name, price, stock_quantity) values('Watch', 8000.00, 150);
 
+/*
+-- 訂單
 +----------+-------------+------------+--------------+--------------+
 | order_id | customer_id | order_date | total_amount | order_status |
 +----------+-------------+------------+--------------+--------------+
@@ -32,7 +35,7 @@ insert into product(product_name, price, stock_quantity) values('Watch', 8000.00
 | 4        | 4           | 2024-09-22 | 8000.00      | Pending      |
 | 5        | 5           | 2024-09-23 | 18000.00     | Cancel       |
 +----------+-------------+------------+--------------+--------------+
-
+*/
 -- 建立訂單檔
 CREATE TABLE IF NOT EXISTS `sales_order` (
   `order_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單唯一標識符',
@@ -49,6 +52,8 @@ INSERT INTO `sales_order` (`customer_id`, `order_date`, `total_amount`, `order_s
 (3, '2024-09-21', 23000.00, 'Finished'),
 (4, '2024-09-22', 8000.00, 'Pending'),
 (5, '2024-09-23', 18000.00, 'Cancel');
+
+/*
 -- 訂單項目
 +---------+----------+------------+----------+------------+
 | item_id | order_id | product_id | quantity | unit_price |
@@ -62,7 +67,7 @@ INSERT INTO `sales_order` (`customer_id`, `order_date`, `total_amount`, `order_s
 | 7       | 5        | 2          | 1        | 15000.00   |
 | 8       | 5        | 3          | 1        | 3000.00    |
 +---------+----------+------------+----------+------------+
-
+*/
 -- 創建訂單項目表
 CREATE TABLE IF NOT EXISTS `order_item` (
   `item_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單項目Id',
