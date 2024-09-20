@@ -49,7 +49,7 @@ INSERT INTO `sales_order` (`customer_id`, `order_date`, `total_amount`, `order_s
 (3, '2024-09-21', 23000.00, 'Finished'),
 (4, '2024-09-22', 8000.00, 'Pending'),
 (5, '2024-09-23', 18000.00, 'Cancel');
-
+-- 訂單項目
 +---------+----------+------------+----------+------------+
 | item_id | order_id | product_id | quantity | unit_price |
 +---------+----------+------------+----------+------------+
