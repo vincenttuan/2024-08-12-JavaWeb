@@ -23,8 +23,6 @@ insert into product(product_name, price, stock_quantity) values('MusicBox', 3000
 insert into product(product_name, price, stock_quantity) values('Pad', 20000.00, 75);
 insert into product(product_name, price, stock_quantity) values('Watch', 8000.00, 150);
 
-
-
 +----------+-------------+------------+--------------+--------------+
 | order_id | customer_id | order_date | total_amount | order_status |
 +----------+-------------+------------+--------------+--------------+
@@ -35,6 +33,22 @@ insert into product(product_name, price, stock_quantity) values('Watch', 8000.00
 | 5        | 5           | 2024-09-23 | 18000.00     | Cancel       |
 +----------+-------------+------------+--------------+--------------+
 
+-- 建立訂單檔
+CREATE TABLE IF NOT EXISTS `sales_order` (
+  `order_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單唯一標識符',
+  `customer_id` INT NOT NULL COMMENT '客戶唯一標識符',
+  `order_date` DATE NOT NULL DEFAULT CURRENT_DATE COMMENT '訂單創建日期',
+  `total_amount` DECIMAL(10, 2) NOT NULL COMMENT '訂單總金額',
+  `order_status` ENUM('Pending', 'Finished', 'Cancel') NOT NULL DEFAULT '待處理' COMMENT '訂單狀態'
+) COMMENT '存儲銷售訂單主要信息的表格';
+
+-- 建立訂單資料
+INSERT INTO `sales_order` (`customer_id`, `order_date`, `total_amount`, `order_status`) VALUES
+(1, '2024-09-19', 33000.00, 'Finished'),
+(2, '2024-09-20', 15000.00, 'Pending'),
+(3, '2024-09-21', 23000.00, 'Finished'),
+(4, '2024-09-22', 8000.00, 'Pending'),
+(5, '2024-09-23', 18000.00, 'Cancel');
 
 +---------+----------+------------+----------+------------+
 | item_id | order_id | product_id | quantity | unit_price |
