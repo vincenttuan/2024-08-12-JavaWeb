@@ -65,11 +65,12 @@ INSERT INTO `sales_order` (`customer_id`, `order_date`, `total_amount`, `order_s
 
 -- 創建訂單項目表
 CREATE TABLE IF NOT EXISTS `order_item` (
-  `item_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單項目唯一標識符',
-  `order_id` INT NOT NULL COMMENT '關聯的訂單ID',
-  `product_id` INT NOT NULL COMMENT '關聯的商品ID',
+  `item_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單項目Id',
+  `order_id` INT NOT NULL COMMENT '訂單Id',
+  `product_id` INT NOT NULL COMMENT '商品Id',
   `quantity` INT NOT NULL COMMENT '購買數量',
   `unit_price` DECIMAL(10, 2) NOT NULL COMMENT '商品單價',
   
   
 ) COMMENT '存儲訂單項目詳情的表格';
+
