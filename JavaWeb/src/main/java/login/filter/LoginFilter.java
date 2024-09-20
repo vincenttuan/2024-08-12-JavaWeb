@@ -21,6 +21,10 @@ public class LoginFilter extends HttpFilter {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("loginStatus") == null) {
 			//resp.getWriter().print("Not Login !");
+			// 該使用者原本要到哪裡 ?
+			String requestURI = req.getRequestURI();
+			// 將該路徑從放到 session 中
+			session.setAttribute("requestURI", requestURI);
 			// 外重導到登入頁面
 			resp.sendRedirect("/JavaWeb/user/login");
 			return;

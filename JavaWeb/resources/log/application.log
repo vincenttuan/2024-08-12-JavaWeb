@@ -9,3 +9,11 @@
 2024-09-20 19:21:13.465 [http-nio-8080-exec-10] INFO  login.controller.AuthCodeServlet - 驗證碼: 1226
 2024-09-20 19:22:13.803 [http-nio-8080-exec-5 ] INFO  login.controller.AuthCodeServlet - 驗證碼: 3118
 2024-09-20 19:44:06.917 [http-nio-8080-exec-10] INFO  login.controller.AuthCodeServlet - 驗證碼: 0430
+2024-09-20 19:45:46.925 [http-nio-8080-exec-9 ] INFO  login.controller.AuthCodeServlet - 驗證碼: 5800
+2024-09-20 19:46:11.815 [http-nio-8080-exec-6 ] INFO  login.controller.AuthCodeServlet - 驗證碼: 2773
+2024-09-20 19:46:20.102 [http-nio-8080-exec-5 ] INFO  login.controller.AuthCodeServlet - 驗證碼: 2598
+2024-09-20 19:47:36.820 [http-nio-8080-exec-12] INFO  login.controller.AuthCodeServlet - 驗證碼: 2136
+2024-09-20 19:47:40.531 [http-nio-8080-exec-14] INFO  login.controller.AuthCodeServlet - 驗證碼: 7491
+2024-09-20 19:47:44.368 [http-nio-8080-exec-20] INFO  login.controller.AuthCodeServlet - 驗證碼: 4804
+2024-09-20 19:51:57.361 [http-nio-8080-exec-11] INFO  login.controller.AuthCodeServlet - 驗證碼: 8927
+2024-09-20 19:52:03.164 [http-nio-8080-exec-14] INFO  login.controller.AuthCodeServlet - 驗證碼: 7966
