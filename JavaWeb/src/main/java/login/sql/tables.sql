@@ -77,10 +77,13 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   
 ) COMMENT '存儲訂單項目詳情的表格';
 
--- 插入商品數據
-INSERT INTO `product` (`product_name`, `price`, `stock_quantity`) VALUES
-('筆記本電腦', 30000.00, 50),
-('智能手機', 15000.00, 100),
-('無線耳機', 3000.00, 200),
-('平板電腦', 20000.00, 75),
-('智能手錶', 8000.00, 150);
+-- 插入訂單項目數據
+INSERT INTO `order_item` (`order_id`, `product_id`, `quantity`, `unit_price`) VALUES
+(1, 1, 1, 30000.00),
+(1, 3, 1, 3000.00),
+(2, 2, 1, 15000.00),
+(3, 4, 1, 20000.00),
+(3, 3, 1, 3000.00),
+(4, 5, 1, 8000.00),
+(5, 2, 1, 15000.00),
+(5, 3, 1, 3000.00);
