@@ -70,7 +70,9 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   `product_id` INT NOT NULL COMMENT '關聯的商品ID',
   `quantity` INT NOT NULL COMMENT '購買數量',
   `unit_price` DECIMAL(10, 2) NOT NULL COMMENT '商品單價',
-  
+  constraint fk_order_id foreign key (order_id) 
+  	references sales_order(order_id) on delete cascade,
+  	
   
 ) COMMENT '存儲訂單項目詳情的表格';
 
