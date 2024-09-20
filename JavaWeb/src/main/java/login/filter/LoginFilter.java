@@ -1,0 +1,31 @@
+package login.filter;
+
+import java.io.IOException;
+
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+// 登入過濾器
+@WebFilter(urlPatterns = {"/user/list"})
+public class LoginFilter extends HttpFilter {
+
+	@Override
+	protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
+			throws IOException, ServletException {
+		// 檢查有 session 登入資料才可以繼續
+		HttpSession session = req.getSession();
+		if(session.getAttribute("loginStatus") == null) {
+			resp.getWriter().print("Not Login !");
+			return;
+		}
+		
+		// 有登入繼續往下
+		chain.doFilter(req, resp);
+	}
+	
+}
