@@ -37,7 +37,7 @@ insert into product(product_name, price, stock_quantity) values('Watch', 8000.00
 CREATE TABLE IF NOT EXISTS `sales_order` (
   `order_id` INT PRIMARY KEY AUTO_INCREMENT COMMENT '訂單唯一標識符',
   `customer_id` INT NOT NULL COMMENT '客戶唯一標識符',
-  `order_date` DATE NOT NULL DEFAULT CURRENT_DATE COMMENT '訂單創建日期',
+  `order_date` datetime NOT NULL DEFAULT current_timestamp COMMENT '訂單創建日期',
   `total_amount` DECIMAL(10, 2) NOT NULL COMMENT '訂單總金額',
   `order_status` ENUM('Pending', 'Finished', 'Cancel') NOT NULL DEFAULT '待處理' COMMENT '訂單狀態'
 ) COMMENT '存儲銷售訂單主要信息的表格';
