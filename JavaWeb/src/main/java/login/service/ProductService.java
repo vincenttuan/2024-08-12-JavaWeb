@@ -1,5 +1,8 @@
 package login.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import login.dao.ProductDao;
 import login.dao.ProductDaoImpl;
 import login.dto.ProductDto;
@@ -25,4 +28,23 @@ public class ProductService {
 		return productDto;
 	}
 	
+	public List<ProductDto> findAllProducts() {
+		// 自 productDao 得到 products 集合物件
+		List<Product> products = productDao.findAllProducts();
+		if(products.size() == 0) {
+			return new ArrayList<>();
+		}
+		List<ProductDto> productDtos = new ArrayList<>();
+		products.forEach(product -> {
+			// 將 Product 物件轉 ProductDto 物件
+			ProductDto productDto = new ProductDto();
+			productDto.setId(product.getProductId());
+			productDto.setName(product.getProductName());
+			productDto.setPrice(product.getPrice());
+			productDto.setQty(product.getStockQuantity());
+			// 注入到 productDtos 集合中
+			productDtos.add(productDto);
+		});
+		return productDtos;
+	}
 }
