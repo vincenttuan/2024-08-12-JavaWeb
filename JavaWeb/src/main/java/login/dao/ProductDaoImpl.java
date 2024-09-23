@@ -13,7 +13,8 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 	
 	@Override
 	public Product getById(int productId) {
-		// TODO Auto-generated method stub
+		String sql = "select product_id, product_name, price, stock_quantity from product where product_id = ?";
+		
 		return null;
 	}
 
