@@ -4,7 +4,7 @@ import java.util.List;
 
 import login.entity.Product;
 
-public class ProductDaoImpl implements ProductDao {
+public class ProductDaoImpl extends BaseDao implements ProductDao {
 	
 	
 	@Override
