@@ -24,6 +24,17 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 		try(Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(sql);) {
 			
+			while(rs.next()) {
+				// 建立商品物件, 將資料紀錄逐一注入到對應的商品物件屬性中
+				Product product = new Product();
+				product.setProductId(rs.getInt("product_id"));
+				product.setProductName(rs.getString("product_name"));
+				product.setPrice(rs.getDouble("price"));
+				product.setStockQuantity(rs.getInt("stock_quantity"));
+				// 將商品注入到集合中
+				products.add(product); 
+			}
+			
 		} catch (SQLException e) {
 			throw new ProductDaoRuntimeException(e.getMessage());
 		}
