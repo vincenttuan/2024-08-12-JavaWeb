@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 // 登入過濾器
-@WebFilter(urlPatterns = {"/user/list"})
+@WebFilter(urlPatterns = {"/user/list", "/product/*"})
 public class LoginFilter extends HttpFilter {
 
 	@Override

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import login.dto.ProductDto;
 import login.service.ProductService;
 
-@WebServlet("/product")
+@WebServlet("/product/list")
 public class ProductServlet extends HttpServlet {
 	
 	private ProductService productService = new ProductService();
