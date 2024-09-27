@@ -28,6 +28,7 @@
 							<th>order date</th>
 							<th>total amount</th>
 							<th>order status</th>
+							<th>item list</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +40,7 @@
 								<td><%=salesOrderDto.getOrderDate() %></td>
 								<td><%=salesOrderDto.getTotalAmount() %></td>
 								<td><%=salesOrderDto.getOrderStatus() %></td>
+								<td><a href="/JavaWeb/product/order/item/list?orderId=<%=salesOrderDto.getOrderId() %>">item list</a></td>
 							</tr>
 						<% } %>
 					</tbody>
