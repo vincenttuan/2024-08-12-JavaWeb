@@ -10,6 +10,7 @@ public class SalesOrderDto {
 	private Date    orderDate;   // 對應 SalesOrder.orderDate
 	private Double  totalAmount; // 對應 SalesOrder.totalAmount
 	private String  orderStatus; // 對應 SalesOrder.orderStatus
+	
 	public Integer getOrderId() {
 		return orderId;
 	}
