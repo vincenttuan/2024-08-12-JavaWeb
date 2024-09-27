@@ -73,7 +73,26 @@ public class UserDao {
 	
 	// 查詢使用者 by userId
 	public Optional<User> getUserById(Integer userId) {
-		// Homework
+		String sql = "select userId, userName, passwordHash, salt, email, active from user where userId = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setInt(1, userId);
+			// 進行查詢
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if(rs.next()) { // 假設有一筆資料
+					User user = new User();
+					user.setUserId(rs.getInt("userId"));
+					user.setUserName(rs.getString("userName"));
+					user.setPasswordHash(rs.getString("passwordHash"));
+					user.setSalt(rs.getString("salt"));
+					user.setEmail(rs.getString("email"));
+					user.setActive(rs.getBoolean("active"));
+					
+					return Optional.of(user);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return Optional.empty();
 	}
 	
