@@ -22,7 +22,7 @@ public class SalesOrderService {
 			SalesOrderDto salesOrderDto = new SalesOrderDto();
 			salesOrderDto.setOrderId(salesOrder.getOrderId());
 			salesOrderDto.setUserId(salesOrder.getCustomerId());
-			salesOrderDto.setUserName(null);
+			salesOrderDto.setUserName(null); // 等一下再寫
 			salesOrderDto.setOrderDate(salesOrder.getOrderDate());
 			salesOrderDto.setTotalAmount(salesOrder.getTotalAmount());
 			salesOrderDto.setOrderStatus(salesOrder.getOrderStatus());
