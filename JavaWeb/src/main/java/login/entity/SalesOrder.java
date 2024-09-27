@@ -2,6 +2,7 @@ package login.entity;
 
 import java.util.Date;
 
+// 對應 sales_order 資料表中的欄位
 public class SalesOrder {
 	private Integer orderId;
 	private Integer customerId;
