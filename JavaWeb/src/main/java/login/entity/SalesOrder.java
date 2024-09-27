@@ -4,11 +4,11 @@ import java.util.Date;
 
 // 對應 sales_order 資料表中的欄位
 public class SalesOrder {
-	private Integer orderId;
-	private Integer customerId;
-	private Date orderDate;
-	private Double totalAmount;
-	private String orderStatus;
+	private Integer orderId;    // 對應欄位: order_id
+	private Integer customerId; // 對應欄位: customer_id
+	private Date orderDate;     // 對應欄位: order_date
+	private Double totalAmount; // 對應欄位: total_amount
+	private String orderStatus; // 對應欄位: order_status
 	
 	public Integer getOrderId() {
 		return orderId;
