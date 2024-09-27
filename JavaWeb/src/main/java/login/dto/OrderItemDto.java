@@ -5,7 +5,7 @@ public class OrderItemDto {
 	private Integer itemId;      // 對應欄位: OrderItem.itemId
 	private Integer orderId;     // 對應欄位: OrderItem.orderId
 	private Integer productId;   // 對應欄位: OrderItem.productId
-	private Integer productName; // 對應欄位: Product.productName
+	private String productName; // 對應欄位: Product.productName
 	private Integer quantity;    // 對應欄位: OrderItem.quantity
 	private Double unitPrice;    // 對應欄位: OrderItem.unitPrice
 	
@@ -27,10 +27,10 @@ public class OrderItemDto {
 	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-	public Integer getProductName() {
+	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(Integer productName) {
+	public void setProductName(String productName) {
 		this.productName = productName;
 	}
 	public Integer getQuantity() {
