@@ -2,12 +2,14 @@ package login.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import login.dao.SalesOrderDao;
 import login.dao.SalesOrderDaoImpl;
 import login.dao.UserDao;
 import login.dto.SalesOrderDto;
 import login.entity.SalesOrder;
+import login.entity.User;
 
 public class SalesOrderService {
 	private SalesOrderDao salesOrderDao = new SalesOrderDaoImpl();
@@ -22,7 +24,12 @@ public class SalesOrderService {
 			SalesOrderDto salesOrderDto = new SalesOrderDto();
 			salesOrderDto.setOrderId(salesOrder.getOrderId());
 			salesOrderDto.setUserId(salesOrder.getCustomerId());
-			salesOrderDto.setUserName(null); // 等一下再寫
+			// 利用 userDao + userId 來取得 User 物件
+			Optional<User> optUser = userDao.getUserById(salesOrderDto.getUserId());
+			if(optUser.isPresent()) {
+				User user = optUser.get();
+				salesOrderDto.setUserName(user.getUserName());
+			}
 			salesOrderDto.setOrderDate(salesOrder.getOrderDate());
 			salesOrderDto.setTotalAmount(salesOrder.getTotalAmount());
 			salesOrderDto.setOrderStatus(salesOrder.getOrderStatus());
