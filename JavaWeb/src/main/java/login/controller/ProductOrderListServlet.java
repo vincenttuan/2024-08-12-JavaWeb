@@ -20,7 +20,7 @@ public class ProductOrderListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<SalesOrderDto> salesOrderDtos = salesOrderService.findAllSalesOrderDtos();
 		req.setAttribute("salesOrderDtos", salesOrderDtos);
-		req.getRequestDispatcher("/WEB-INF/jsp/login/order_list.jsp");
+		req.getRequestDispatcher("/WEB-INF/jsp/login/order_list.jsp").forward(req, resp);
 	}
 	
 }
