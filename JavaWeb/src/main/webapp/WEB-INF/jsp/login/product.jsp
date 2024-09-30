@@ -36,7 +36,7 @@
 								<td><%=product.getName() %></td>
 								<td><%=product.getPrice() %></td>
 								<td><%=product.getQty() %></td>
-								<td><img src='data:image/png;base64,<%=product.getQty() %>'></td>
+								<td><img src='data:image/png;base64,<%=product.getImageBase64() %>'></td>
 							</tr>
 						<% } %>
 					</tbody>
