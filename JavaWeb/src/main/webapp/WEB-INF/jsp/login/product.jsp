@@ -33,7 +33,7 @@
 					<tbody>
 						<% for(ProductDto product : productDtos) { %>
 							<tr>
-								<td><a href="/JavaWeb/product/update?id="<%=product.getId() %>>修改</a></td>
+								<td><a href="/JavaWeb/product/update?id=<%=product.getId() %>">修改</a></td>
 								<td><%=product.getId() %></td>
 								<td><%=product.getName() %></td>
 								<td><%=product.getPrice() %></td>
