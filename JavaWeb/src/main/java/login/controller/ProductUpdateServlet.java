@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import login.dto.ProductDto;
+import login.entity.Product;
 import login.exception.ProductDaoRuntimeException;
 import login.service.ProductService;
 
@@ -22,6 +24,9 @@ public class ProductUpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		ProductDto productDto = productService.getById(Integer.parseInt(id));
+		req.setAttribute("productDto", productDto);
 		// 重導到 product_update.jsp
 		req.getRequestDispatcher("/WEB-INF/jsp/login/product_update.jsp").forward(req, resp);
 	}
