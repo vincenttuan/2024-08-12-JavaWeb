@@ -26,6 +26,7 @@
 							<th>Name</th>
 							<th>Price</th>
 							<th>Qty</th>
+							<th>Image</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +36,7 @@
 								<td><%=product.getName() %></td>
 								<td><%=product.getPrice() %></td>
 								<td><%=product.getQty() %></td>
+								<td><img src='data:image/png;base64,<%=product.getQty() %>'></td>
 							</tr>
 						<% } %>
 					</tbody>
