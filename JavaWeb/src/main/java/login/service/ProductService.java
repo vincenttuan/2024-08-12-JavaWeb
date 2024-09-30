@@ -66,4 +66,19 @@ public class ProductService {
 			throw new ProductDaoRuntimeException(e.getMessage());
 		}
 	}
+	
+	public void updateProduct(String id, String productName, String price, String stockQuantity, String imageBase64)  {
+		// 檢查略..
+		Product product = new Product();
+		product.setProductName(productName);
+		product.setPrice(Double.parseDouble(price));
+		product.setStockQuantity(Integer.parseInt(stockQuantity));
+		product.setImageBase64(imageBase64);
+		// 修改
+		try {
+			productDao.update(Integer.parseInt(id), product);
+		} catch (SQLException e) {
+			throw new ProductDaoRuntimeException(e.getMessage());
+		}
+	}
 }
