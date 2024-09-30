@@ -10,12 +10,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import login.exception.ProductDaoRuntimeException;
+import login.service.ProductService;
 
 // 新增商品(含上傳圖片)
 @WebServlet("/product/add")
 @MultipartConfig(maxFileSize = 1024*1024*10) // 設定上傳檔案大小 10MB
 public class ProductAddServlet extends HttpServlet {
-
+	
+	private ProductService productService = new ProductService();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 重導到 product_add.jsp
@@ -37,16 +41,21 @@ public class ProductAddServlet extends HttpServlet {
 			base64Image = Base64.getEncoder().encodeToString(productImage.getInputStream().readAllBytes());
 		}
 		
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("text/html;charset=UTF-8");
-		resp.getWriter().println("<html>");
-		resp.getWriter().println("商品名稱: " + productName + "<p>");
-		resp.getWriter().println("商品價格: " + price + "<p>");
-		resp.getWriter().println("商品庫存: " + stockQuantity + "<p>");
-		resp.getWriter().println("商品圖片: <img src='data:image/png;base64," + base64Image + "'><p>");
-		resp.getWriter().println("</html>");
+		String resultMessage = "新增";
+		try {
+			productService.addProduct(productName, price, stockQuantity, base64Image);
+			resultMessage += "成功";
+		} catch (ProductDaoRuntimeException e) {
+			resultMessage += "失敗: " + e.getMessage();
+		}
 		
+		req.setAttribute("resultMessage", resultMessage);
+		req.setAttribute("productName", productName);
+		req.setAttribute("price", price);
+		req.setAttribute("stockQuantity", stockQuantity);
+		req.setAttribute("base64Image", base64Image);
+		
+		req.getRequestDispatcher("/WEB-INF/jsp/login/product_result.jsp").forward(req, resp);
 	}
 	
 }
