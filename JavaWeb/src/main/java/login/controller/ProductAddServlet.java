@@ -1,6 +1,7 @@
 package login.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -8,6 +9,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 // 新增商品(含上傳圖片)
 @WebServlet("/product/add")
@@ -28,6 +30,22 @@ public class ProductAddServlet extends HttpServlet {
 		String stockQuantity = req.getParameter("stock_quantity");
 		
 		// 取得 type="file" 表單資料
+		Part productImage = req.getPart("product_image");
+		String base64Image = null;
+		if(productImage != null && productImage.getSize() > 0) {
+			// 將圖片傳換為 base64 編碼 (圖片轉字串)
+			base64Image = Base64.getEncoder().encodeToString(productImage.getInputStream().readAllBytes());
+		}
+		
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=UTF-8");
+		resp.getWriter().println("<html>");
+		resp.getWriter().println("商品名稱: " + productName + "<p>");
+		resp.getWriter().println("商品價格: " + price + "<p>");
+		resp.getWriter().println("商品庫存: " + stockQuantity + "<p>");
+		resp.getWriter().println("商品圖片: <img src='data:image/png;base64," + base64Image + "'><p>");
+		resp.getWriter().println("</html>");
 		
 	}
 	
