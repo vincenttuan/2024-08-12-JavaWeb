@@ -65,7 +65,20 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 
 	@Override
 	public void add(Product product) throws SQLException {
-		
+		String sql = "insert into product(product_name, price, stock_quantity, image_base64) " +
+					 "values (?, ?, ?, ?)";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setString(1, product.getProductName());
+			pstmt.setDouble(2, product.getPrice());
+			pstmt.setInt(3, product.getStockQuantity());
+			pstmt.setString(4, product.getImageBase64());
+			
+			int rowcount = pstmt.executeUpdate();
+			if(rowcount != 1) {
+				throw new SQLException("新增失敗");
+			}
+		}
 		
 	}
 
