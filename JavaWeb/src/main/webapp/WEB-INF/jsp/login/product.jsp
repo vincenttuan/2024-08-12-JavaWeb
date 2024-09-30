@@ -22,6 +22,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
+							<th>修改</th>
 							<th>Id</th>
 							<th>Name</th>
 							<th>Price</th>
@@ -32,6 +33,7 @@
 					<tbody>
 						<% for(ProductDto product : productDtos) { %>
 							<tr>
+								<td><a href="/JavaWeb/product/update?id="<%=product.getId() %>>修改</a></td>
 								<td><%=product.getId() %></td>
 								<td><%=product.getName() %></td>
 								<td><%=product.getPrice() %></td>
