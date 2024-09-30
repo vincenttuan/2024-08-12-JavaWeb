@@ -85,7 +85,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 	@Override
 	public void update(int id, Product product) throws SQLException {
 		String sql = "update product set product_name=?, price=?, stock_quantity=?, image_base64=? " +
-				 	 "where id=?";
+				 	 "where product_id=?";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			
 			pstmt.setString(1, product.getProductName());
