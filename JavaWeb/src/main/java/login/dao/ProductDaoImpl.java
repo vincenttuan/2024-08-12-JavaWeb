@@ -14,7 +14,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 	
 	@Override
 	public Product getById(int productId) {
-		String sql = "select product_id, product_name, price, stock_quantity from product where product_id = ?";
+		String sql = "select product_id, product_name, price, stock_quantity, image_base64 from product where product_id = ?";
 		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			
 			pstmt.setInt(1, productId); // sql 第 1 個 ? 要放的內容值 
@@ -28,6 +28,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 					product.setProductName(rs.getString("product_name"));
 					product.setPrice(rs.getDouble("price"));
 					product.setStockQuantity(rs.getInt("stock_quantity"));
+					product.setImageBase64(rs.getString("image_base64"));
 					return product; // 回傳 Product 物件
 				}
 			}
@@ -39,7 +40,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 
 	@Override
 	public List<Product> findAllProducts() {
-		String sql = "select product_id, product_name, price, stock_quantity from product";
+		String sql = "select product_id, product_name, price, stock_quantity, image_base64 from product";
 		List<Product> products = new ArrayList<>();
 		try(Statement stat = conn.createStatement();
 			ResultSet rs = stat.executeQuery(sql);) {
@@ -51,6 +52,7 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 				product.setProductName(rs.getString("product_name"));
 				product.setPrice(rs.getDouble("price"));
 				product.setStockQuantity(rs.getInt("stock_quantity"));
+				product.setImageBase64(rs.getString("image_base64"));
 				// 將商品注入到集合中
 				products.add(product); 
 			}
