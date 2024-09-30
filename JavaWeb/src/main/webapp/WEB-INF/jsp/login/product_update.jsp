@@ -14,7 +14,7 @@
 		<form method="post" enctype="multipart/form-data" action="/JavaWeb/product/update">
 			<fieldset>
 				<legend>商品修改</legend>
-				<input type="hidden" value="<%=productDto.getId() %>">
+				<input type="hidden" name="id" value="<%=productDto.getId() %>">
 				商品名稱: <input type="text" name="product_name" value="<%=productDto.getName() %>" placeholder="請輸入商品名稱" required /><p />
 				商品價格: <input type="number" name="price" value="<%=productDto.getPrice() %>" placeholder="請輸入商品價格" required /><p />
 				商品庫存: <input type="text" name="stock_quantity" value="<%=productDto.getQty() %>" placeholder="請輸入商品庫存" required /><p />
