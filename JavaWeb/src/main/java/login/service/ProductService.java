@@ -1,5 +1,6 @@
 package login.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import login.dao.ProductDao;
 import login.dao.ProductDaoImpl;
 import login.dto.ProductDto;
 import login.entity.Product;
+import login.exception.ProductDaoRuntimeException;
 
 public class ProductService {
 	
@@ -46,5 +48,20 @@ public class ProductService {
 			productDtos.add(productDto);
 		});
 		return productDtos;
+	}
+	
+	public void addProduct(String productName, String price, String stockQuantity, String imageBase64)  {
+		// 檢查略..
+		Product product = new Product();
+		product.setProductName(productName);
+		product.setPrice(Double.parseDouble(price));
+		product.setStockQuantity(Integer.parseInt(stockQuantity));
+		product.setImageBase64(imageBase64);
+		// 新增
+		try {
+			productDao.add(product);
+		} catch (SQLException e) {
+			throw new ProductDaoRuntimeException(e.getMessage());
+		}
 	}
 }
