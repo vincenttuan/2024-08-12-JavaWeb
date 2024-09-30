@@ -9,7 +9,9 @@
 | 4          | Pad              | 20000.00 | 75             |
 | 5          | Watch            | 8000.00  | 150            |
 +------------+------------------+----------+----------------+
-*/
+新增商品欄位
+alter table product add column image_base64 longtext
+**/
 -- 創建商品表
 create table if not exists product (
 	product_id int primary key auto_increment comment '商品Id',
