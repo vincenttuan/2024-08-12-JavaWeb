@@ -62,5 +62,13 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 		}
 		return products;
 	}
+
+	@Override
+	public void add(Product product) throws SQLException {
+		
+		
+	}
+
+	
 	
 }
