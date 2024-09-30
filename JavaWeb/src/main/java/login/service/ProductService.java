@@ -27,6 +27,7 @@ public class ProductService {
 		productDto.setName(product.getProductName());
 		productDto.setPrice(product.getPrice());
 		productDto.setQty(product.getStockQuantity());
+		productDto.setImageBase64(product.getImageBase64());
 		return productDto;
 	}
 	
@@ -44,6 +45,7 @@ public class ProductService {
 			productDto.setName(product.getProductName());
 			productDto.setPrice(product.getPrice());
 			productDto.setQty(product.getStockQuantity());
+			productDto.setImageBase64(product.getImageBase64());
 			// 注入到 productDtos 集合中
 			productDtos.add(productDto);
 		});
