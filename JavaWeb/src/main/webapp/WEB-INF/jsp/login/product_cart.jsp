@@ -1,3 +1,4 @@
+<%@page import="java.util.LinkedHashMap"%>
 <%@ page import="login.dto.CartDto"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="login.dto.ProductDto"%>
@@ -6,6 +7,9 @@
     pageEncoding="UTF-8"%>
 <%
 	Map<Integer, CartDto> cart = (Map<Integer, CartDto>)session.getAttribute("cart");
+	if(cart == null) {
+		cart = new LinkedHashMap<>();
+	}
 %>    
 <!DOCTYPE html>
 <html>
