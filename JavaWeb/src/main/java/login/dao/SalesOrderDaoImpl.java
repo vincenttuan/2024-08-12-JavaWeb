@@ -1,5 +1,7 @@
 package login.dao;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -32,6 +34,30 @@ public class SalesOrderDaoImpl extends BaseDao implements SalesOrderDao {
 			e.printStackTrace();
 		}
 		return salesOrders;
+	}
+
+	@Override
+	public int addSalesOrder(SalesOrder salesOrder) {
+		String sql = "insert into sales_order(customer_id, order_date, total_amount, order_status) values(?, ?, ?, ?)";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setInt(1, salesOrder.getCustomerId());
+			pstmt.setDate(2, new java.sql.Date(salesOrder.getOrderDate().getTime()));
+			pstmt.setDouble(3, salesOrder.getTotalAmount());
+			pstmt.setString(4, salesOrder.getOrderStatus());
+			// 新增
+			pstmt.executeUpdate();
+			// 取得自動生成的 order_id
+			ResultSet generateKeys = pstmt.getGeneratedKeys();
+			if(generateKeys.next()) {
+				return generateKeys.getInt(1); // 第一個 column
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 	
 	
