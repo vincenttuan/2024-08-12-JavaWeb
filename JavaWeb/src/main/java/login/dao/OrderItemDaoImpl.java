@@ -3,6 +3,7 @@ package login.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +43,9 @@ public class OrderItemDaoImpl extends BaseDao implements OrderItemDao {
 	public int addOrderItem(OrderItem orderItem) {
 		String sql = "insert into order_item(order_id, product_id, quantity, unit_price) values(?, ?, ?, ?)";
 		
-		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try(PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			
+			System.out.println(orderItem.getOrderId());
 			pstmt.setInt(1, orderItem.getOrderId());
 			pstmt.setInt(2, orderItem.getProductId());
 			pstmt.setInt(3, orderItem.getQuantity());

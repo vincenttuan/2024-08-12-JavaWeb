@@ -39,7 +39,7 @@ public class SalesOrderDaoImpl extends BaseDao implements SalesOrderDao {
 	@Override
 	public int addSalesOrder(SalesOrder salesOrder) {
 		String sql = "insert into sales_order(customer_id, order_date, total_amount, order_status) values(?, ?, ?, ?)";
-		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+		try(PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			
 			pstmt.setInt(1, salesOrder.getCustomerId());
 			pstmt.setDate(2, new java.sql.Date(salesOrder.getOrderDate().getTime()));
