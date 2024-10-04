@@ -40,10 +40,11 @@
 							</tr>
 						<% } %>
 						<tr>
-							<td colspan="4">總價:</td><td><%=total %></td>
+							<td colspan="4" align="right">總價:</td><td><%=total %></td>
 						</tr>
 					</tbody>
 				</table>
+				<p>
 				<button type="submit" class="pure-button pure-button-primary">結帳</button>
 			</fieldset>
 		</form>
