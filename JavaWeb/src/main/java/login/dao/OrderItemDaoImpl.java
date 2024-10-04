@@ -45,7 +45,6 @@ public class OrderItemDaoImpl extends BaseDao implements OrderItemDao {
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			
-			System.out.println(orderItem.getOrderId());
 			pstmt.setInt(1, orderItem.getOrderId());
 			pstmt.setInt(2, orderItem.getProductId());
 			pstmt.setInt(3, orderItem.getQuantity());
