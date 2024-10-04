@@ -50,7 +50,7 @@ public class ProductCartServlet extends HttpServlet {
 			cart.put(productId, cartDto);
 		}
 		// 寫入到 session
-		req.setAttribute("cart", cart);
+		session.setAttribute("cart", cart);
 		// 重導到 jsp
 		req.getRequestDispatcher("/WEB-INF/jsp/login/product_cart.jsp").forward(req, resp);
 	}
