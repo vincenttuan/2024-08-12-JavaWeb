@@ -42,6 +42,24 @@ public class OrderItemDaoImpl extends BaseDao implements OrderItemDao {
 	public int addOrderItem(OrderItem orderItem) {
 		String sql = "insert into order_item(order_id, product_id, quantity, unit_price) values(?, ?, ?, ?)";
 		
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setInt(1, orderItem.getOrderId());
+			pstmt.setInt(2, orderItem.getProductId());
+			pstmt.setInt(3, orderItem.getQuantity());
+			pstmt.setDouble(4, orderItem.getUnitPrice());
+			// 新增
+			pstmt.executeUpdate();
+			// 取得自動生成的 item_id
+			ResultSet generateKeys = pstmt.getGeneratedKeys();
+			if(generateKeys.next()) {
+				return generateKeys.getInt(1); // 第一個 column
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return 0;
 	}
 	
