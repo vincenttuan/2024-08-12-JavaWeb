@@ -19,7 +19,15 @@
 			<fieldset>
 				<legend>訂單新增</legend>
 				商品資訊: 
-					
+					<select name="productId">
+						<% for(ProductDto productDto : products) { %>
+							<option value="<%=productDto.getId() %>">
+								品名: <%=productDto.getName() %>
+								價格: $<%=productDto.getPrice() %>
+								數量: <%=productDto.getQty() %>
+							</option>
+						<% } %>
+					</select>
 					<p />
 				購買數量: 
 					<input type="number" name="amount" placeholder="請輸入購買數量" required /><p />
