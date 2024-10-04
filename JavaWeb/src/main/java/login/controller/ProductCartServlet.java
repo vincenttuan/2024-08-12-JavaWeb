@@ -20,6 +20,13 @@ import login.service.ProductService;
 @WebServlet("/product/cart")
 public class ProductCartServlet extends HttpServlet {
 	private ProductService productService = new ProductService();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 重導到 jsp
+		req.getRequestDispatcher("/WEB-INF/jsp/login/product_cart.jsp").forward(req, resp);
+	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int productId = Integer.parseInt(req.getParameter("productId"));
