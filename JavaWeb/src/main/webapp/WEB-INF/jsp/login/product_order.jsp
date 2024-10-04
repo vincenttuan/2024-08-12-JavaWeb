@@ -15,7 +15,7 @@
 	<body style="padding: 15px">
 		<!-- title bar -->
 		<%@ include file="/WEB-INF/jsp/login/title_bar.jspf" %>
-		<form method="post" action="/JavaWeb/product/cart">
+		<form class="pure-form" method="post" action="/JavaWeb/product/cart">
 			<fieldset>
 				<legend>訂單新增</legend>
 				商品資訊: 
@@ -31,7 +31,7 @@
 					<p />
 				購買數量: 
 					<input type="number" name="amount" placeholder="請輸入購買數量" required /><p />
-				<button type="submit">新增到購物車</button>
+				<button type="submit" class="pure-button pure-button-primary">新增到購物車</button>
 			</fieldset>
 		</form>
 	</body>
