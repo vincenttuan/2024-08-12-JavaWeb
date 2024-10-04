@@ -5,6 +5,7 @@ import java.util.List;
 
 import login.dao.OrderItemDao;
 import login.dao.OrderItemDaoImpl;
+import login.dto.CartDto;
 import login.dto.OrderItemDto;
 import login.entity.OrderItem;
 
@@ -27,5 +28,14 @@ public class OrderItemService {
 		}
 		
 		return orderItemDtos;
+	}
+	
+	public int addOrderItem(int orderId, CartDto cartDto) {
+		OrderItem orderItem = new OrderItem();
+		orderItem.setOrderId(orderId);
+		orderItem.setProductId(cartDto.getProductDto().getId());
+		orderItem.setQuantity(cartDto.getAmount()); // 購買數量
+		orderItem.setUnitPrice(cartDto.getProductDto().getPrice());
+		return orderItemDao.addOrderItem(orderItem);
 	}
 }
