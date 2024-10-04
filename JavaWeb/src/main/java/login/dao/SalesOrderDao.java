@@ -6,4 +6,5 @@ import login.entity.SalesOrder;
 
 public interface SalesOrderDao {
 	List<SalesOrder> findAllSalesOrders();
+	int addSalesOrder(SalesOrder salesOrder);
 }
