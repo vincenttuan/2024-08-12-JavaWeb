@@ -20,7 +20,30 @@
 		<form class="pure-form" method="post" action="/JavaWeb/product/submit">
 			<fieldset>
 				<legend>Cart 購物車</legend>
-				
+				<table class="pure-table">
+					<thead>
+						<tr>
+							<th>商品 Id</th><th>商品名稱</th><th>商品單價</th><th>購買數量</th><th>小計</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% double total = 0; %>
+						<% for(Map.Entry<Integer, CartDto> entry : cart.entrySet()) { %>
+							<% double subtotal = entry.getValue().getProductDto().getPrice() * entry.getValue().getAmount(); %>
+							<% total += subtotal; %>
+							<tr>
+								<td><%=entry.getKey() %></td>
+								<td><%=entry.getValue().getProductDto().getName() %></td>
+								<td><%=entry.getValue().getProductDto().getPrice() %></td>
+								<td><%=entry.getValue().getAmount() %></td>
+								<td><%=subtotal %></td>
+							</tr>
+						<% } %>
+						<tr>
+							<td colspan="4">總價:</td><td><%=total %></td>
+						</tr>
+					</tbody>
+				</table>
 				<button type="submit" class="pure-button pure-button-primary">結帳</button>
 			</fieldset>
 		</form>
