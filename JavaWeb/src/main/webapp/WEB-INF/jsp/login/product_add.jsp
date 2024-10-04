@@ -7,6 +7,8 @@
 		<title>Product Add</title>
 	</head>
 	<body>
+		<!-- title bar -->
+		<%@ include file="/WEB-INF/jsp/login/title_bar.jspf" %>
 		<form method="post" enctype="multipart/form-data" action="/JavaWeb/product/add">
 			<fieldset>
 				<legend>商品新增</legend>

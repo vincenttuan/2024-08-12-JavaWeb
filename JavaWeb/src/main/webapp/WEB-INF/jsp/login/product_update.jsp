@@ -11,6 +11,8 @@
 		<title>Product Update</title>
 	</head>
 	<body>
+		<!-- title bar -->
+		<%@ include file="/WEB-INF/jsp/login/title_bar.jspf" %>
 		<form method="post" enctype="multipart/form-data" action="/JavaWeb/product/update">
 			<fieldset>
 				<legend>商品修改</legend>

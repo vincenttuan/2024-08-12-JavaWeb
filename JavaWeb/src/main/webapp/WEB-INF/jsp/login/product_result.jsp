@@ -14,6 +14,8 @@
 		<title>Product Result</title>
 	</head>
 	<body>
+		<!-- title bar -->
+		<%@ include file="/WEB-INF/jsp/login/title_bar.jspf" %>
 		<div>
 			<fieldset>
 				<legend><%=resultMessage %></legend>

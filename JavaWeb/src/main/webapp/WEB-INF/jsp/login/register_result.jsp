@@ -8,6 +8,8 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 15px">
+		<!-- title bar -->
+		<%@ include file="/WEB-INF/jsp/login/title_bar.jspf" %>
 		<form class="pure-form" method="get" action="/JavaWeb/user/register">
 			<fieldset>
 				<legend>會員註冊結果</legend>
