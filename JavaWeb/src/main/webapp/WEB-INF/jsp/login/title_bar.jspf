@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div style="padding: 15px">
-	<a href="./user/register"> 使用者註冊 </a> | 
-	<a href="./user/list"> 使用者列表 </a> | 
-	<a href="./user/login"> 使用者登入 </a> | 
-	<a href="./user/authcode"> 驗證碼 </a> | 
-	<a href="./user/logout"> 使用者登出 </a> | 
-	<a href="./product/list"> 商品列表 </a> | 
-	<a href="./product/order"> 商品訂購 </a> | 
-	<a href="./product/order/list"> 商品訂購列表 </a> | 
-	<a href="./product/add"> 商品新增 </a>
+	<a href="/JavaWeb/user/register"> 使用者註冊 </a> | 
+	<a href="/JavaWeb/user/list"> 使用者列表 </a> | 
+	<a href="/JavaWeb/user/login"> 使用者登入 </a> | 
+	<a href="/JavaWeb/user/authcode"> 驗證碼 </a> | 
+	<a href="/JavaWeb/user/logout"> 使用者登出 </a> | 
+	<a href="/JavaWeb/product/list"> 商品列表 </a> | 
+	<a href="/JavaWeb/product/order"> 商品訂購 </a> | 
+	<a href="/JavaWeb/product/order/list"> 商品訂購列表 </a> | 
+	<a href="/JavaWeb/product/add"> 商品新增 </a>
 </div>
