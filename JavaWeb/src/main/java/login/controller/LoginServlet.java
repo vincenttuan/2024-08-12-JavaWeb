@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 			// 透過 session 來紀錄登入成功資訊
 			session.setAttribute("loginStatus", true); // 登入狀態
 			session.setAttribute("loginName", userName); // 登入者姓名
+			session.setAttribute("userDto", userDto); // userDto
 			// 檢查 session 中有無 requestURI 的資料?
 			if(session.getAttribute("requestURI") != null) {
 				String requestURI = (String)session.getAttribute("requestURI");
