@@ -37,5 +37,12 @@ public class OrderItemDaoImpl extends BaseDao implements OrderItemDao {
 		}
 		return orderItems;
 	}
+
+	@Override
+	public int addOrderItem(OrderItem orderItem) {
+		String sql = "insert into order_item(order_id, product_id, quantity, unit_price) values(?, ?, ?, ?)";
+		
+		return 0;
+	}
 	
 }
