@@ -1,12 +1,15 @@
 package login.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import login.dao.SalesOrderDao;
 import login.dao.SalesOrderDaoImpl;
 import login.dao.UserDao;
+import login.dto.CartDto;
 import login.dto.SalesOrderDto;
 import login.entity.SalesOrder;
 import login.entity.User;
@@ -14,6 +17,7 @@ import login.entity.User;
 public class SalesOrderService {
 	private SalesOrderDao salesOrderDao = new SalesOrderDaoImpl();
 	private UserDao userDao = new UserDao();
+	private OrderItemService orderItemService = new OrderItemService();
 	
 	public List<SalesOrderDto> findAllSalesOrderDtos() {
 		List<SalesOrderDto> salesOrderDtos = new ArrayList<>();
@@ -37,5 +41,24 @@ public class SalesOrderService {
 			salesOrderDtos.add(salesOrderDto);
 		}
 		return salesOrderDtos;
+	}
+	
+	// 購物車結帳
+	public void submit(int customerId, Map<Integer, CartDto> cart) {
+		// 新增訂單主檔
+		SalesOrder salesOrder = new SalesOrder();
+		salesOrder.setCustomerId(customerId);
+		salesOrder.setOrderDate(new Date());
+		salesOrder.setOrderStatus("Finished");
+		double total = cart.values()
+							.stream()
+							.mapToDouble(ca -> ca.getAmount() * ca.getProductDto().getPrice())
+							.sum();
+		salesOrder.setTotalAmount(total); // 總價
+		int orderId = salesOrderDao.addSalesOrder(salesOrder);
+		
+		// 新增訂單項目
+		cart.values().forEach(cartDto -> orderItemService.addOrderItem(orderId, cartDto));
+		
 	}
 }
