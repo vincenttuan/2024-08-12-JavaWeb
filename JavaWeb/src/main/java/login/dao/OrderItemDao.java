@@ -6,4 +6,5 @@ import login.entity.OrderItem;
 
 public interface OrderItemDao {
 	List<OrderItem> findAllOrderItemsByOrderId(Integer orderId);
+	int addOrderItem(OrderItem orderItem);
 }
