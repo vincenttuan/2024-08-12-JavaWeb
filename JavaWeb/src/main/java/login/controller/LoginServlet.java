@@ -40,9 +40,15 @@ public class LoginServlet extends HttpServlet {
 			}
 			// 比對 userName & password 登入資訊
 			UserDto userDto = userService.verifyUser(userName, password);
+			// 比對 active 是否是 true(1) or false(0)
+			if(!userDto.getActive()) {
+				throw new LoginException("Email 尚未確認");
+			}
+			
 			req.setAttribute("userDto", userDto);
 			req.setAttribute("loginSuccess", true);
 			req.setAttribute("loginMessage", "登入成功");
+			
 			// 透過 session 來紀錄登入成功資訊
 			session.setAttribute("loginStatus", true); // 登入狀態
 			session.setAttribute("loginName", userName); // 登入者姓名
