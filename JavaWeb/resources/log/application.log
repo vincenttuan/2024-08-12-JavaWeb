@@ -18,3 +18,4 @@
 2024-10-07 21:09:38.400 [http-nio-8080-exec-56] INFO  login.controller.AuthCodeServlet - 驗證碼: 2583
 2024-10-07 21:12:25.080 [http-nio-8080-exec-67] INFO  login.controller.AuthCodeServlet - 驗證碼: 7746
 2024-10-07 21:14:46.081 [http-nio-8080-exec-72] INFO  login.controller.AuthCodeServlet - 驗證碼: 1094
+2024-10-07 21:18:26.057 [http-nio-8080-exec-80] INFO  login.controller.AuthCodeServlet - 驗證碼: 1825
