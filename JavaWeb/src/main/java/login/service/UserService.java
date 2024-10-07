@@ -12,6 +12,7 @@ import com.google.protobuf.Option;
 import login.dao.UserDao;
 import login.dto.UserDto;
 import login.entity.User;
+import login.exception.EmailConfirmException;
 import login.exception.LoginException;
 
 // 使用者服務
