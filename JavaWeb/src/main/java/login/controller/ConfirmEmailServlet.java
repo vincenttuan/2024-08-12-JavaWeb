@@ -26,7 +26,7 @@ public class ConfirmEmailServlet extends HttpServlet {
 		
 		req.setAttribute("isPass", isPass);
 		req.setAttribute("errorMessage", errorMessage);
-		
+		req.getRequestDispatcher("/WEB-INF/jsp/login/confirm_email_result.jsp").forward(req, resp);
 	}
 	
 }
