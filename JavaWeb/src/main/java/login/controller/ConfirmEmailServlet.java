@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import login.exception.EmailConfirmException;
 import login.service.UserService;
 
 @WebServlet("/user/confirm/email")
@@ -15,6 +16,13 @@ public class ConfirmEmailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userName = req.getParameter("userName");
+		try {
+			boolean isPass = userService.passEmail(userName);
+			
+		} catch (EmailConfirmException e) {
+			
+		}
+		
 		
 	}
 	
