@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import login.service.UserService;
 
 @WebServlet("/user/confirm/email")
-public class ConfirmEmail extends HttpServlet {
+public class ConfirmEmailServlet extends HttpServlet {
 	private UserService userService = UserService.getInstance();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
