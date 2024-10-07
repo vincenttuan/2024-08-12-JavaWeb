@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import login.dto.CartDto;
+import login.exception.ProductQtyNotEnoughException;
 import login.service.ProductService;
 
 @WebServlet("/product/cart")
@@ -31,6 +32,17 @@ public class ProductCartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int productId = Integer.parseInt(req.getParameter("productId"));
 		int amount = Integer.parseInt(req.getParameter("amount"));
+		
+		// 檢查商品庫存是否足夠
+		int qty = productService.getById(productId).getQty(); // 目前商品庫存
+		if(amount > qty) { // 欲購買的數量 > 庫存
+			try {
+				throw new ProductQtyNotEnoughException("庫存不足 ! 目前庫存: " + qty + " 欲購買數量: " + amount);
+			} catch (ProductQtyNotEnoughException e) {
+				
+				return;
+			}
+		}
 		
 		// 將欲購買的商品放到 "cart" session 變數中
 		HttpSession session = req.getSession();
