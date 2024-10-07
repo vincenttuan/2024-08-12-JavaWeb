@@ -33,19 +33,7 @@ public class ProductCartServlet extends HttpServlet {
 		int productId = Integer.parseInt(req.getParameter("productId"));
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		
-		// 檢查商品庫存是否足夠
-		int qty = productService.getById(productId).getQty(); // 目前商品庫存
-		if(amount > qty) { // 欲購買的數量 > 庫存
-			try {
-				throw new ProductQtyNotEnoughException("庫存不足", "目前庫存: " + qty + " 欲購買數量: " + amount);
-			} catch (ProductQtyNotEnoughException e) {
-				req.setAttribute("baseException", e);
-				req.getRequestDispatcher("/WEB-INF/jsp/login/error_result.jsp").forward(req, resp);
-				return;
-			}
-		}
-		
-		// 將欲購買的商品放到 "cart" session 變數中
+		// 取得購物車資料 "cart" session 變數中
 		HttpSession session = req.getSession();
 		Map<Integer, CartDto> cart = null;
 		if(session.getAttribute("cart") == null) {
@@ -66,9 +54,27 @@ public class ProductCartServlet extends HttpServlet {
 			cartDto.setProductId(productId);
 			cartDto.setAmount(amount);
 			cartDto.setProductDto(productService.getById(productId));
-			// 將商品放入到 cart 中
-			cart.put(productId, cartDto);
 		}
+		
+		// 檢查商品庫存是否足夠
+		int qty = productService.getById(productId).getQty(); // 目前商品庫存
+		int previousAmount = cart.values()
+								 .stream()
+								 .filter(dto -> dto.getProductId() == productId)
+								 .mapToInt(CartDto::getAmount).sum(); // 購物車中針對該商品已購買的數量
+		int totalAmount = previousAmount + amount;
+		if(totalAmount > qty) { // 欲購買的數量 > 庫存
+			try {
+				throw new ProductQtyNotEnoughException("庫存不足", "目前庫存: " + qty + " 欲購買總數量: " + totalAmount);
+			} catch (ProductQtyNotEnoughException e) {
+				req.setAttribute("baseException", e);
+				req.getRequestDispatcher("/WEB-INF/jsp/login/error_result.jsp").forward(req, resp);
+				return;
+			}
+		}
+				
+		// 將商品放入到 cart 中
+		cart.put(productId, cartDto);		
 		// 寫入到 session
 		session.setAttribute("cart", cart);
 		// 重導到 jsp
