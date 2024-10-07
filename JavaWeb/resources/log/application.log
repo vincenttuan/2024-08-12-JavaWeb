@@ -6,3 +6,5 @@
 2024-10-07 18:08:30.447 [http-nio-8080-exec-2 ] INFO  login.controller.AuthCodeServlet - é©—è­‰ç¢¼: 8025
 2024-10-07 18:08:33.684 [http-nio-8080-exec-3 ] INFO  login.controller.AuthCodeServlet - é©—è­‰ç¢¼: 9106
 2024-10-07 18:08:38.124 [http-nio-8080-exec-7 ] INFO  login.controller.AuthCodeServlet - é©—è­‰ç¢¼: 8038
+2024-10-07 19:09:41.395 [http-nio-8080-exec-1 ] INFO  login.controller.AuthCodeServlet - ÅçÃÒ½X: 1268
+2024-10-07 19:09:55.421 [http-nio-8080-exec-9 ] INFO  login.controller.AuthCodeServlet - ÅçÃÒ½X: 7735

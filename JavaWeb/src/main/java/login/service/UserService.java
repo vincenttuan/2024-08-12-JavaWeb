@@ -120,4 +120,18 @@ public class UserService {
 		throw new LoginException("密碼錯誤");
 	}
 	
+	// 使用者Email開通確認(from email)
+	public boolean passEmail(String userName) throws EmailConfirmException {
+		Optional<User> optUser = dao.getUserByName(userName);
+		if(optUser.isEmpty()) {
+			throw new EmailConfirmException("無此使用者");
+		}
+		
+		Integer userId = optUser.get().getUserId();
+		Boolean active = true; 
+		// 更新 user active 欄位
+		dao.updateActive(userId, active);
+		return true;
+	}
+	
 }
