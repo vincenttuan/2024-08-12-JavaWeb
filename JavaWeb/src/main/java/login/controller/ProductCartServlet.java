@@ -37,9 +37,10 @@ public class ProductCartServlet extends HttpServlet {
 		int qty = productService.getById(productId).getQty(); // 目前商品庫存
 		if(amount > qty) { // 欲購買的數量 > 庫存
 			try {
-				throw new ProductQtyNotEnoughException("庫存不足 ! 目前庫存: " + qty + " 欲購買數量: " + amount);
+				throw new ProductQtyNotEnoughException("庫存不足", "目前庫存: " + qty + " 欲購買數量: " + amount);
 			} catch (ProductQtyNotEnoughException e) {
-				
+				req.setAttribute("baseException", e);
+				req.getRequestDispatcher("/WEB-INF/jsp/login/error_result.jsp").forward(req, resp);
 				return;
 			}
 		}
