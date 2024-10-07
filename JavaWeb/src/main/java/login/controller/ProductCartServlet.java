@@ -43,16 +43,16 @@ public class ProductCartServlet extends HttpServlet {
 		}
 		
 		CartDto cartDto = null;
+		int newAmount = amount;
 		// 判斷 productId 是否已存在 cart 中
 		if(cart.containsKey(productId)) {
 			// 變更數量 amount
 			cartDto = cart.get(productId);
-			cartDto.setAmount(cartDto.getAmount() + amount); // 數量累加
+			newAmount = cartDto.getAmount() + amount; // 數量累加
 		} else {
 			// 建立 CartDto
 			cartDto = new CartDto();
 			cartDto.setProductId(productId);
-			cartDto.setAmount(amount);
 			cartDto.setProductDto(productService.getById(productId));
 		}
 		
@@ -62,6 +62,7 @@ public class ProductCartServlet extends HttpServlet {
 								 .stream()
 								 .filter(dto -> dto.getProductId() == productId)
 								 .mapToInt(CartDto::getAmount).sum(); // 購物車中針對該商品已購買的數量
+		System.out.println(cart + "," + previousAmount + ", " + amount);
 		int totalAmount = previousAmount + amount;
 		if(totalAmount > qty) { // 欲購買的數量 > 庫存
 			try {
@@ -72,7 +73,10 @@ public class ProductCartServlet extends HttpServlet {
 				return;
 			}
 		}
-				
+		
+		// 設定數量
+		cartDto.setAmount(newAmount);
+		
 		// 將商品放入到 cart 中
 		cart.put(productId, cartDto);		
 		// 寫入到 session
