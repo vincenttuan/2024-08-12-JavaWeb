@@ -1,11 +1,14 @@
 package login.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import login.dao.ProductDao;
+import login.dao.ProductDaoImpl;
 import login.dao.SalesOrderDao;
 import login.dao.SalesOrderDaoImpl;
 import login.dao.UserDao;
@@ -17,6 +20,7 @@ import login.entity.User;
 public class SalesOrderService {
 	private SalesOrderDao salesOrderDao = new SalesOrderDaoImpl();
 	private UserDao userDao = new UserDao();
+	private ProductDao productDao = new ProductDaoImpl();
 	private OrderItemService orderItemService = new OrderItemService();
 	
 	public List<SalesOrderDto> findAllSalesOrderDtos() {
@@ -57,8 +61,17 @@ public class SalesOrderService {
 		salesOrder.setTotalAmount(total); // 總價
 		int orderId = salesOrderDao.addSalesOrder(salesOrder);
 		
-		// 新增訂單項目
-		cart.values().forEach(cartDto -> orderItemService.addOrderItem(orderId, cartDto));
+		// 新增訂單項目 + 扣抵庫存
+		cart.values().forEach(cartDto -> {
+			// 新增訂單項目
+			orderItemService.addOrderItem(orderId, cartDto);
+			// 扣抵庫存
+			try {
+				productDao.deductInventory(cartDto.getProductId(), cartDto.getAmount());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
 		
 	}
 }
