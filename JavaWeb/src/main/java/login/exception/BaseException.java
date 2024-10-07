@@ -7,7 +7,7 @@ public class BaseException extends Exception {
 	public BaseException(String title, String errorMsg) {
 		super(errorMsg);
 		this.title = title;
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMsg;
 	}
 	public String getTitle() {
 		return title;
