@@ -25,7 +25,7 @@ public class ProductSubmit extends HttpServlet {
 		// 清除購物車 session 資料
 		session.setAttribute("cart", null);
 		
-		resp.getWriter().print("Submit OK");
+		req.getRequestDispatcher("/WEB-INF/jsp/login/product_submit_result.jsp").forward(req, resp);
 	}
 	
 }
