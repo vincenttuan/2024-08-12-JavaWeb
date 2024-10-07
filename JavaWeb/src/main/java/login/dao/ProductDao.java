@@ -15,5 +15,5 @@ public interface ProductDao {
 	// 單筆修改
 	void update(int id, Product product) throws SQLException;
 	// 扣抵庫存
-	void deductInventory(int productId, int amount);
+	void deductInventory(int productId, int amount) throws SQLException;
 }

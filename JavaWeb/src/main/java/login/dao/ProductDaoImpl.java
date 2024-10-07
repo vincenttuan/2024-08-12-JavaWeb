@@ -100,6 +100,22 @@ public class ProductDaoImpl extends BaseDao implements ProductDao {
 			}
 		}
 	}
+	
+	@Override
+	public void deductInventory(int productId, int amount) throws SQLException {
+		String sql = "update product set stock_quantity = stock_quantity - ? where product_id = ?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			pstmt.setInt(1, amount);
+			pstmt.setInt(2, productId);
+			
+			int rowcount = pstmt.executeUpdate();
+			if(rowcount != 1) {
+				throw new SQLException("扣抵庫存失敗");
+			}
+		}
+		
+	}
 
 	
 	
