@@ -16,13 +16,16 @@ public class ConfirmEmailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userName = req.getParameter("userName");
+		boolean isPass = false;
+		String errorMessage = "成功";
 		try {
-			boolean isPass = userService.passEmail(userName);
-			
+			isPass = userService.passEmail(userName);
 		} catch (EmailConfirmException e) {
-			
+			errorMessage = e.getMessage();
 		}
 		
+		req.setAttribute("isPass", isPass);
+		req.setAttribute("errorMessage", errorMessage);
 		
 	}
 	
